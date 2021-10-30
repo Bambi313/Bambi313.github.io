@@ -1,22 +1,39 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import i18n from '../lib/i18n/lang'
+
 import Home from '../views/Home.vue'
+
+import MissingPage from '../views/MissingPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path:'/',
+    redirect: `/${i18n.locale}`
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/:lang',
+    component:{
+      render (c) { return c('router-view') }
+    },
+    children:[
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      {
+        path: '*',
+        component: MissingPage
+      }
+    ]
   }
 ]
 
@@ -27,3 +44,13 @@ const router = new VueRouter({
 })
 
 export default router
+
+router.beforeEach((to, from, next)=>{
+  let lang = to.params.lang;
+  if( !lang ) {
+    lang = 'tw'
+  }
+
+  i18n.locale = lang;
+  next()
+})
