@@ -2,6 +2,7 @@
   <div id="app">
     <Header/>
     <router-view/>
+    <div class="_app_bambi"><img src="./assets/img/looking_bambi.png"/></div>
   </div>
 </template>
 

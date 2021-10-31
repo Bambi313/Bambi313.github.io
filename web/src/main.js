@@ -4,6 +4,7 @@ import router from './router'
 import i18n from './lib/i18n/lang'
 import store from './store/index'
 
+import './assets/css/line-awesome.min.css'
 
 Vue.config.productionTip = false
 
