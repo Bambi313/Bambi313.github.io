@@ -6,8 +6,8 @@ export const state = {
 }
 
 //mutations
-// export const mutations = {
+export const mutations = {
 //     [types.UPDATE_LANG](state,lang) {
 //         state.lang = lang;
 //     },
-// }
+}

@@ -6,10 +6,18 @@
     <div class="_header_menu">
       <i @click="toggleMenu( false )" class="_header_menu__close las la-times"></i>
       <ul class="_header_links">
-        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}`" rel="noopener">Home</router-link></li>
-        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener">About</router-link></li>
-        <!-- <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li> -->
+        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}`" rel="noopener" v-html="$t('header.home')">Home</router-link></li>
+        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener" v-html="$t('header.about')">About</router-link></li>
       </ul>
+      
+      <div class="_header_lang _header_lang--desktop">
+        <select class="_header_lang_wrap" :value="currLang">
+          <option class="_header_lang_item" value="tw">TW</option>
+          <option class="_header_lang_item" value="en">EN</option>
+          <!-- <option class="_header_lang_item" value="jp">JP</option> -->
+        </select>
+      </div>
+
     </div>
     <div class="_header_hamburger" @click="toggleMenu( true )"><i class="las la-bars"></i></div>
   </div>
@@ -21,6 +29,7 @@ export default {
   data:function(){
     return{
         menuOpen: false,
+        currLang: this.$i18n.locale
     }
   },
   props: {

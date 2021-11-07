@@ -1,0 +1,140 @@
+
+// header
+._header{
+    display: flex;
+    justify-content: space-between;
+    color: $color-dark-gray;
+    z-index: 1;
+    position: relative;
+
+    @media screen and (min-width: $sm){
+        padding: 1rem 0;
+    }
+
+    &.active{
+        ._header_menu{
+            opacity: 1;
+            visibility: visible;
+            right: 0;
+
+            &::after{
+                content: '';
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 40%;
+                background-color: rgba( 0, 0, 0, .2 );
+                height: 100%;
+            }
+        }
+    }
+}
+._header_logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+._header_menu{
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s all ease-in;
+    position: fixed;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    text-align: right;
+    right: -20%;
+    background-color: rgba(255,255,255,.95);
+
+    @media screen and (min-width: $sm){
+        flex: auto;
+        justify-content: center;
+        flex-direction: row;
+        height: auto;
+        width: 100%;
+        background-color: transparent;
+        opacity: 1;
+        right: 0;
+        visibility: visible;
+        // position: relative;
+        position: absolute;
+    }
+
+}
+._header_links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    @media screen and (min-width: $sm){
+    flex-direction: row;
+    }
+}
+._header_menu__close{
+    padding: 1rem;
+    cursor: pointer;
+
+    @media screen and (min-width: $sm){
+        display: none !important;
+    }
+}
+
+// lang
+._header_lang{
+    display: flex;
+    flex-basis: auto;
+    margin-top: 1rem;
+    
+    @media screen and (min-width: $sm){
+        // position: relative;
+        // right: 0;
+        margin-top: 0;
+    }
+}
+._header_lang_wrap{
+    border: none;
+    border: none;
+    padding: 0.5rem;
+    margin: auto;
+}
+
+._header_links__item{
+    padding: 0 .5rem;
+    margin: .5rem 0;
+    width: 100%;
+
+    @media screen and (min-width: $sm){
+        margin: 0;
+        width: auto;
+    }
+}
+._header_links__a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: $color-dark-gray !important;
+    opacity: .8;
+    
+    &:hover{
+        opacity: 1;
+    }
+
+    @media screen and (min-width: $sm){
+        &:hover{
+        
+        }
+    }
+}
+._header_hamburger{
+    padding: 1rem;
+    display: flex;
+    cursor: pointer;
+
+    @media screen and (min-width: $sm){
+        display: none ;
+    }
+}
