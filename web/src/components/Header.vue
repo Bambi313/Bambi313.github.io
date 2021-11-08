@@ -11,7 +11,7 @@
       </ul>
       
       <div class="_header_lang _header_lang--desktop">
-        <select class="_header_lang_wrap" :value="currLang">
+        <select class="_header_lang_wrap" v-model="selectedLang" @change="switchLang(selectedLang)">
           <option class="_header_lang_item" value="tw">TW</option>
           <option class="_header_lang_item" value="en">EN</option>
           <!-- <option class="_header_lang_item" value="jp">JP</option> -->
@@ -29,7 +29,7 @@ export default {
   data:function(){
     return{
         menuOpen: false,
-        currLang: this.$i18n.locale
+        selectedLang: this.$i18n.locale
     }
   },
   props: {
@@ -38,7 +38,15 @@ export default {
   methods:{
     toggleMenu( status ){
       this.menuOpen = status;
+    },
+    switchLang( lang ){
+      let fullPath = this.$route.fullPath;
+      let newFullPath = fullPath.replace(this.$i18n.locale, lang );
+      this.$i18n.locale = lang;
+      this.$router.push( newFullPath );
     }
+  },
+  mounted(){
   }
 }
 </script>
