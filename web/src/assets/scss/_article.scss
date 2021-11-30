@@ -1,0 +1,27 @@
+._article {
+
+}
+._article_title {
+    color: black;
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    padding-bottom: .25rem;
+    border-bottom: 1px solid #222;
+}
+._article_info {
+    display: flex;
+    font-size: .75rem;
+}
+._article_time {
+    margin-right: .5rem;
+}
+._article_tags {
+    span {
+        margin-right: .25rem;
+        padding: 2px;
+        border: 1px solid #ddd;
+        background-color: #fafafa;
+        border-radius: 3px;
+    }
+}

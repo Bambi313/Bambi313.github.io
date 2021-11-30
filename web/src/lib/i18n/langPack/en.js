@@ -2,6 +2,7 @@ const lang={
     header:{
         home: `Home`,
         about: `About`,
+        blog: `Blog`,
     },
     home: {
         category:{
@@ -47,6 +48,7 @@ const lang={
     },
     about: {
         title: `This is an about page`,
+        subtitle: `關於這個網站`,
     }
 }
 export default lang

@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import i18n from '../lib/i18n/lang'
 
-import Home from '../views/Home.vue'
-
 import MissingPage from '../views/MissingPage.vue'
 
 Vue.use(VueRouter)
@@ -22,12 +20,22 @@ const routes = [
       {
         path: '/',
         name: 'Home',
-        component: Home
+        component: () => import('../views/Home.vue')
       },
       {
         path: 'about',
         name: 'About',
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      {
+        path: 'blog/',
+        name: 'Blog',
+        component: () => import('../views/Blog.vue')
+      },
+      {
+        path: 'blog/article1',
+        name: 'article1',
+        component: () => import('../views/blog/article_1_20211116.vue')
       },
       {
         path: '*',

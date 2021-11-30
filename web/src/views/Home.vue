@@ -1,6 +1,6 @@
 <template>
   <div class="_home">
-    <div class="_home_container">
+    <div class="_container">
       <div class="_home_intro">
         <div class="_home_intro__photo">
           <img class="_home_intro__img" src="../assets/img/bambi_profile.jpg">

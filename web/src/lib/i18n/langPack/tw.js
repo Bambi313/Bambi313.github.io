@@ -1,7 +1,8 @@
 const lang={
     header:{
         home: `首頁`,
-        about: `關於我`,
+        about: `關於`,
+        blog: `部落格`,
     },
     home: {
         category:{
@@ -48,6 +49,7 @@ const lang={
     },
     about: {
         title: `這裡是關於我`,
+        subtitle: `關於這個網站`,
     }
 }
 export default lang
