@@ -1,12 +1,43 @@
 <template>
   <div class="_blog">
     <div class="_container">
-      <li class="_blog_items">
-        <router-link class="_blog_item" :to="`/${this.$i18n.locale}/blog/article1`" rel="noopener"><span>2021/11/16</span> 解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。</router-link>
-        
-        
-      </li>
       
+      <section class="_blog_section">
+        <div class="_home_category__title">生活日記</div>
+        <ul class="_blog_items">
+          <li class="_blog_item">
+            <router-link class="_blog_item__link" :to="`/${this.$i18n.locale}/blog/funsiamo-cake-making-experience`" rel="noopener">
+              <div class="_blog_item__time">2021/12/18</div>
+              <div>做蛋糕囉～ Funsiamo 烘焙體驗</div>
+            </router-link>
+          </li>
+          <!-- <li class="_blog_item">
+            <router-link class="_blog_item__link" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
+              <div class="_blog_item__time">2021/12/18</div>
+              解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。
+            </router-link>
+          </li> -->
+        </ul>
+      </section>
+
+      <section class="_blog_section">
+        <div class="_home_category__title">程式筆記</div>
+        <ul class="_blog_items">
+          <li class="_blog_item">
+            <router-link class="_blog_item__link" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
+              <div class="_blog_item__time">2021/12/18</div>
+              解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。
+            </router-link>
+          </li>
+          <!-- <li class="_blog_item">
+            <router-link class="_blog_item__link" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
+              <div class="_blog_item__time">2021/12/18</div>
+              解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。
+            </router-link>
+          </li> -->
+        </ul>
+      </section>
+    
     </div>
   </div>
 </template>

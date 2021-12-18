@@ -1,7 +1,7 @@
 <template>
   <div class="_header" :class="menuOpen? 'active':''">
     <div class="_header_logo">
-      Bambi
+      <router-link :to="`/${this.$i18n.locale}`">Bambi</router-link>
     </div>
     <div class="_header_menu">
       <i @click="toggleMenu( false )" class="_header_menu__close las la-times"></i>
@@ -39,6 +39,8 @@ export default {
   methods:{
     toggleMenu( status ){
       this.menuOpen = status;
+      console.log('this.menuOpen',this.menuOpen);
+      
     },
     switchLang( lang ){
       let fullPath = this.$route.fullPath;

@@ -4,6 +4,7 @@
 @import "./shared";
 @import "./article";
 
+@import "./blog";
 @import "./header";
 @import "./footer";
 @import "./home";
@@ -12,10 +13,16 @@ body{
     // font-size: .75rem;
 }
 ._container{
-    padding: 1rem;
-    width: 100%;
-    max-width: 400px;
+    padding: 2rem 1rem;
+    width: 95%;
     margin: auto;
+
+    @media screen and (min-width: $lg){
+        max-width: 90%;
+    }
+    @media screen and (min-width: $xxl){
+        max-width: 70%;
+    }
 }
 
 ._button_icon{

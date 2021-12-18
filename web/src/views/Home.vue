@@ -139,10 +139,6 @@
         </ul>
       </div>
 
-      <footer class="_footer">
-        © Bambi.
-      </footer>
-
     </div>
   </div>
 </template>

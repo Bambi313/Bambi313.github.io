@@ -1,0 +1,31 @@
+._blog ._container{
+    display: flex;
+    flex-wrap: wrap;
+}
+._blog_section{
+    padding: 1rem;
+    flex: 50%;
+    margin-bottom: 2rem;
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+._blog_items{
+    list-style: none;
+    margin: .5rem 0;
+}
+._blog_item{
+    color: $color-dark-gray;
+    padding: 4px 0;
+    border-bottom: 1px solid $color-light-gray;
+}
+._blog_item__link{
+    display: flex;
+}
+._blog_item__time{
+    font-size: .75rem;
+    margin-right: 1rem;
+    padding-top: 3px;
+    color: $color-basic-gray;
+}

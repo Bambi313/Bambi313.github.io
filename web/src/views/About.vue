@@ -7,14 +7,14 @@
       工作之外的時間會畫圖、聽音樂、看動畫、玩遊戲、更新技術知識、跳舞、上山下海...等等。<br>
       <br>
       喜歡穿搭；但上班都以簡單舒適為主。<br>
-      喜歡打扮；但大部分時間還是素顏見人。<br>
+      喜歡打扮；但沒有特別事情時都以素顏見人。<br>
       <br>
       分別在日本跟加拿大居住過半年～一年的時間，<br>
       持續學習日文及英文中。<br>
       <br>
-      覺得很多東西值比量還要重要太多，<br>
+      <!-- 覺得很多東西值比量還要重要太多，<br>
       例如物質跟人際關係。<br>
-      <br>
+      <br> -->
       喜歡簡單過生活 <i class="las la-smile"></i>
       
       <h3 class="_shared_category__title" v-html="$t('about.subtitle')">關於這個站</h3>
@@ -26,7 +26,9 @@
       有空時會再陸續加上英文跟日文翻譯，<br>
       如發現英文跟日文有錯誤歡迎糾正，<br>
       甘溫～
-
+      <h3 class="_shared_category__title">組成</h3>
+      Vue cli3, github pages, vue-router, vue-i18n, vuex<br>
+      字型：粉圓體
     </div>
   </div>
 </template>

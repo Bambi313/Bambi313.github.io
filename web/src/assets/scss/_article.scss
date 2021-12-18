@@ -1,17 +1,92 @@
 ._article {
+    iframe{
+        margin: 1rem 0;
+    } 
+    a {
+        color: $color-basic-gray;
+        border-bottom: 1px solid $color-basic-gray;
+        padding: 0 2px 1px;
 
+        &:hover{
+            filter: brightness(50%);
+        }
+
+        &._article_a_img{
+            border-bottom: none;
+        }
+    }
+    h2{
+        // color: black;
+        // font-size: .75rem;
+        // margin: 1rem 0;
+        // border-left: 3px solid black;
+        // padding-left: 3px;
+    }
+    p{
+        margin-bottom: .7rem;
+    }
+    
+    // layout 
+    ._container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+    header{
+        @media screen and (min-width: $md){
+            flex-basis: 30%;
+            // padding-right: 3%;
+        }
+    }
+    section{
+        @media screen and (min-width: $md){
+            flex-basis: 65%;
+        }
+    }
+    footer{
+        flex-basis: 100%;
+    }
+}
+._article_cover {
+    img{
+        width: 100%;
+    }
+}
+._article_img_normal{
+    img {
+        width: 100%;
+    
+        @media screen and (min-width: $sm){
+            max-height: 300px;
+            height: 100%;
+            width: auto;
+        }
+    }
+    
 }
 ._article_title {
     color: black;
-    font-size: 1.2rem;
-    margin-top: .5rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
-    padding-bottom: .25rem;
-    border-bottom: 1px solid #222;
+    padding-bottom: 0.25rem;
 }
 ._article_info {
     display: flex;
     font-size: .75rem;
+    margin-bottom: 1rem;
+}
+._article_summary{
+    font-size: .75rem;
+    // color: $color-dark-gray;
+}
+._article_summary__title{
+    display: flex;
+
+    span{
+        margin-right: .5rem;
+        // flex: auto;
+    }
 }
 ._article_time {
     margin-right: .5rem;
@@ -23,5 +98,18 @@
         border: 1px solid #ddd;
         background-color: #fafafa;
         border-radius: 3px;
+        // white-space: nowrap;
+    }
+}
+
+._article_a_img {
+    img {
+        width: 100%;
+    
+        @media screen and (min-width: $sm){
+            max-height: 300px;
+            height: 100%;
+            width: auto;
+        }
     }
 }

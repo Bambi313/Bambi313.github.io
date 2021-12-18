@@ -32,10 +32,16 @@ const routes = [
         name: 'Blog',
         component: () => import('../views/Blog.vue')
       },
+      // blog
       {
-        path: 'blog/article1',
-        name: 'article1',
+        path: 'blog/fix-router-redirect-while-using-vue-and-gitpage',
+        // name: 'article1',
         component: () => import('../views/blog/article_1_20211116.vue')
+      },
+      {
+        path: 'blog/funsiamo-cake-making-experience',
+        // name: 'article2',
+        component: () => import('../views/blog/article_1_20211218.vue')
       },
       {
         path: '*',
