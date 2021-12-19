@@ -16,6 +16,11 @@ figure {
     }
 }
 
+._shared_page__title{
+    color: $color-dark-gray;
+    font-size: 1.2rem;
+    flex-basis: 100%;
+}
 ._shared_category__title{
     color: $color-dark-gray;
     font-size: .75rem;

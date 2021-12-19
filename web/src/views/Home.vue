@@ -11,8 +11,8 @@
             現任前端工程師。喜歡畫圖、動漫、遊戲、跳舞跟可愛的一切。<br>
             持續學習日文跟英文中。
           </p>
-          <span v-html="$t('home.intro.know_more')">know_more</span>
-          <router-link class="_home_intro__a" :to="`/${this.$i18n.locale}/about`" rel="noopener"><span v-html="$t('home.intro.about')">關於我</span></router-link>
+          <!-- <span v-html="$t('home.intro.know_more')">know_more</span>
+          <router-link class="_home_intro__a" :to="`/${this.$i18n.locale}/about`" rel="noopener"><span v-html="$t('home.intro.about')">關於我</span></router-link> -->
         </div>
       </div>
 
@@ -28,7 +28,15 @@
               <span v-html="$t('home.links.line')">Line stickers</span>
               <i class="_button_icon__angle las la-angle-right"></i>
             </a>
-            <p class="_home_links__des" v-html="$t('home.links.line_des')">太想用自己角色貼圖 ＋ WFH 之下的產物。喜歡的人歡迎打包帶走：）</p>
+            <p class="_home_links__des" v-html="$t('home.links.line_des')">太想用自己角色貼圖 ＋ WFH 之下的產物。</p>
+          </li>
+          <li class="_home_link__item">
+            <a class="_home_links__title _home_links__title--instgram" href="https://linevoom.line.me/user/_dR6u2SLls3lUolYAomDjVo4DwcRkC7GvzZLvyvc" target="_blank" rel="noopener">
+              <svg class="_button_icon _button_icon--line" height="70" viewBox="0 0 70 70" width="70" xmlns="http://www.w3.org/2000/svg"><path d="m28.3454542 59.702028 26.5950545-15.3931613c6.3787471-3.6919037 6.3787471-12.9257957 0-16.6176994l-26.5950545-15.3931613c-6.3698836-3.68687398-14.3454542.9172691-14.3454542 8.3088496v10.5980656l.004379.0247968c.0069994.0344693.0203122.0847662.0426293.1473737.0259106.0728075.0581444.146084.0932155.2140976l.0580316.1005442c.0512422.0421853.1261953.0952961.2239051.1513966.0642722.0370486.1296309.0704236.1919596.0987181l.0907059.0384555c.0473248.0186415.0825855.0300726.1053071.0365796l.0238295-.0024621c.0655267-.0073863.1513833-.0239175.2490052-.0488901l.2140259-.0629591 10.6911678-6.1880055c.6215194-.3713711 1.3488735-.5844826 2.1208266-.5844826 2.2920473 0 4.1424837 1.8614982 4.1424837 4.1484279 0 1.4753102-.7699375 2.7702106-1.925068 3.5044428l-.1960224.1171155-13.0752445 7.5679365-.5711263.4982341c-.0989237.0885311-.2041717.1839054-.3127288.284007l-.3784841.3568032c-.4291775.4141023-.8034714.8109699-1.0018338 1.0893228-.5503166.7723488-.7563488 1.2955502-.7868659 1.9377838l-.004098.1783824v6.5806385c0 7.3915453 7.9755706 11.9956532 14.3454542 8.3088496z" fill="none" stroke="#00c300" stroke-width="5"/></svg>
+              <span v-html="$t('home.links.voom_life')">Line Voom</span>
+              <i class="_button_icon__angle las la-angle-right"></i>
+            </a>
+            <p class="_home_links__des" v-html="$t('home.links.voom_life_des')"></p>
           </li>
           <li class="_home_link__item">
             <a class="_home_links__title _home_links__title--instgram" href="https://www.instagram.com/bambitall/" target="_blank" rel="noopener">
@@ -46,7 +54,7 @@
             </a>
             <p class="_home_links__des" v-html="$t('home.links.ig_life_des')">玩耍、美食、穿搭...等等，有的沒的各種紀錄。</p>
           </li>
-          <li class="_home_link__item">
+          <!-- <li class="_home_link__item">
             <a class="_home_links__title _home_links__title--facebook" href="https://www.facebook.com/bambitall" target="_blank" rel="noopener">
               <i class="_button_icon _button_icon--facebook lab la-facebook"></i>
               <span v-html="$t('home.links.fb')">Facebook</span>
@@ -64,11 +72,11 @@
               除了 vlog 之外還有怪物彈珠、貓咪大戰爭活動影片的放置處。
               有很多影片素材待剪，但不確定什麼時候會卯起來更新的頻道。
             </p>
-          </li>
+          </li> -->
         </ul>
       </div>
 
-      <div class="_home_category">
+      <!-- <div class="_home_category">
         <div class="_home_category__title" v-html="$t('home.category.stickers')">
           Line 貼圖們
         </div>
@@ -80,9 +88,6 @@
             <div class="_home_stickers__img" v-for="i in 8" :key="i">
               <img :src="`../assets/img/set_${item.id}/${currLang}/line_sticker_${i}.png`" />
             </div>
-            <!-- <div class="_home_stickers__img" v-for="i in 8" :key="i">
-              <img :src="`../assets/img/stickers/${item.id}/${currLang}/line_sticker_${i}.png`" />
-            </div> -->
           </div>
           <a class="_home_stickers__btn" target="_blank" :href="`https://store.line.me/stickershop/product/${item.id}/${line_lang}`" rel="noopener">
             <span v-html="$t('home.button.all')">看全部</span>
@@ -125,15 +130,15 @@
           </a>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="_home_category">
         <div class="_home_category__title" v-html="$t('home.category.updates')">
-          更新日記
+          更新
         </div>
         <ul class="_home_news">
           <li class="_home_news__item">
-            <span class="_home_news__date">2021/11/06</span>
+            <span class="_home_news__date">2021/12/19</span>
             <span class="_home_news__title"  v-html="$t('home.updates.title_1')">網站第一版上線！</span>
           </li>
         </ul>
@@ -152,66 +157,66 @@ export default {
   data(){
     return{
       currLang: this.$i18n.locale,
-      line_lang: this.checkLangForLineLink(),
-      stickerData: this.getStickerData(),
-      stickerData_en: {
-          set1: {
-            id: `16376129`,
-            data: {
-              title: `Bambi's daily life with BROWN & FRIENDS`,
-              note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
-              des: `Let Bambi and BROWN by your side. Bring you joy and happy life ~` 
-            }
-          },
-          set2: {
-            id: `16728302`,
-            data: {
-              title: `Bambi cares about you`,
-              // note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
-              des: `Show your loved ones that you really care about/love them.`
-            }
-          },
-      },
-      stickerData_tw:{
-          set1: {
-            id: `16376129`,
-            data: {
-              title: `班比與 BROWN & FRIENDS 的日常`,
-              note: `販售時間： 2021年08月25日～2023年08月24日 09:59`,
-              des: `讓班比跟熊大的好朋友們陪在你身邊。跟你一起開心享受生活～`
-            }
-          },
-          set2: {
-            id: `16728302`,
-            data: {
-              title: `班比關心你`,
-              // note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
-              des: `讓你愛的人們接收到你滿滿的關心跟愛～`
-            }
-          },
-      }
+      // line_lang: this.checkLangForLineLink(),
+      // stickerData: this.getStickerData(),
+      // stickerData_en: {
+      //     set1: {
+      //       id: `16376129`,
+      //       data: {
+      //         title: `Bambi's daily life with BROWN & FRIENDS`,
+      //         note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
+      //         des: `Let Bambi and BROWN by your side. Bring you joy and happy life ~` 
+      //       }
+      //     },
+      //     set2: {
+      //       id: `16728302`,
+      //       data: {
+      //         title: `Bambi cares about you`,
+      //         // note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
+      //         des: `Show your loved ones that you really care about/love them.`
+      //       }
+      //     },
+      // },
+      // stickerData_tw:{
+      //     set1: {
+      //       id: `16376129`,
+      //       data: {
+      //         title: `班比與 BROWN & FRIENDS 的日常`,
+      //         note: `販售時間： 2021年08月25日～2023年08月24日 09:59`,
+      //         des: `讓班比跟熊大的好朋友們陪在你身邊。跟你一起開心享受生活～`
+      //       }
+      //     },
+      //     set2: {
+      //       id: `16728302`,
+      //       data: {
+      //         title: `班比關心你`,
+      //         // note: `Avaliable： 2021/08/25 ～ 2023/08/24 09:59`,
+      //         des: `讓你愛的人們接收到你滿滿的關心跟愛～`
+      //       }
+      //     },
+      // }
     }
   },
   components: {
     // Header
   },
   methods:{
-    getStickerData(){
-      if( this.$i18n.locale === 'tw' ){
-        return this.stickerData_tw;
-      } else {
-        return this.stickerData_en;
-      }
-    },
-    checkLangForLineLink(){
-      let val = ``
-      if( this.$i18n.locale === 'tw' ){
-        val = 'zh-Hant'
-      } else {
-        val = this.$i18n.locale
-      }      
-      return val
-    },
+    // getStickerData(){
+    //   if( this.$i18n.locale === 'tw' ){
+    //     return this.stickerData_tw;
+    //   } else {
+    //     return this.stickerData_en;
+    //   }
+    // },
+    // checkLangForLineLink(){
+    //   let val = ``
+    //   if( this.$i18n.locale === 'tw' ){
+    //     val = 'zh-Hant'
+    //   } else {
+    //     val = this.$i18n.locale
+    //   }      
+    //   return val
+    // },
     getCookie(name) {
       var nameEQ = name + "=";
       var ca = document.cookie.split(';');

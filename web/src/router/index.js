@@ -32,6 +32,12 @@ const routes = [
         name: 'Blog',
         component: () => import('../views/Blog.vue')
       },
+      {
+        path: 'works/',
+        name: 'Works',
+        component: () => import('../views/Works.vue')
+      },
+
       // blog
       {
         path: 'blog/fix-router-redirect-while-using-vue-and-gitpage',
@@ -67,4 +73,8 @@ router.beforeEach((to, from, next)=>{
 
   i18n.locale = lang;
   next()
+})
+
+router.afterEach(() => {
+  window.scrollTo(0,0);
 })

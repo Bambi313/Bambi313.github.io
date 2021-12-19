@@ -6,9 +6,10 @@
     <div class="_header_menu">
       <i @click="toggleMenu( false )" class="_header_menu__close las la-times"></i>
       <ul class="_header_links">
-        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}`" rel="noopener" v-html="$t('header.home')">Home</router-link></li>
-        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener" v-html="$t('header.about')">About</router-link></li>
-        <li class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/blog`" rel="noopener" v-html="$t('header.blog')">Blog</router-link></li>
+        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}`" rel="noopener" v-html="$t('header.home')">Home</router-link></li>
+        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/works`" rel="noopener" v-html="$t('header.works')">Works</router-link></li>
+        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener" v-html="$t('header.about')">About</router-link></li>
+        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/blog`" rel="noopener" v-html="$t('header.blog')">Blog</router-link></li>
       </ul>
       
       <div class="_header_lang _header_lang--desktop">
@@ -25,6 +26,10 @@
 </template>
 
 <script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
   name: 'Header',
   data:function(){
@@ -39,17 +44,33 @@ export default {
   methods:{
     toggleMenu( status ){
       this.menuOpen = status;
-      console.log('this.menuOpen',this.menuOpen);
-      
     },
     switchLang( lang ){
       let fullPath = this.$route.fullPath;
       let newFullPath = fullPath.replace(this.$i18n.locale, lang );
       this.$i18n.locale = lang;
       this.$router.push( newFullPath );
+      this.menuOpen = false;
+    },
+    scrollAnimation(){
+      // console.log('scrollAnimation()');
+      const showAnim = gsap.from('_header', { 
+        yPercent: -100,
+        paused: true,
+        duration: 0.2
+      }).progress(1);
+
+      ScrollTrigger.create({
+        start: "top top",
+        end: 99999,
+        onUpdate: (self) => {
+          self.direction === -1 ? showAnim.play() : showAnim.reverse()
+        }
+      });
     }
   },
   mounted(){
+    this.scrollAnimation();
   }
 }
 </script>

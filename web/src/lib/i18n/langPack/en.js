@@ -1,6 +1,7 @@
 const lang={
     header:{
         home: `Home`,
+        works: `Works`,
         about: `About`,
         blog: `Blog`,
     },
@@ -14,14 +15,17 @@ const lang={
             all: `All stickers`,
         },
         intro:{
-            hi: `Hi, I'm Bambi.`,
-            des: `I'm a front-end engineer who loves drawing, watching animation, playing games, dancing and everything cute.<br>Learning Japanese and English.`,
+            hi: `WELCOME`,
+            des: ``,
+            // des: `I'm a front-end engineer who loves drawing, watching animation, playing games, dancing and everything cute.<br>Learning Japanese and English.`,
             know_more: `Know more`,
             about: `about me.`,
         },
         links: {
             line: `Line stickers`,
             line_des: `Since I really want to use my own stickers, I made these when I was working from home.<br>Grab them if you like.：）`,
+            voom_life:`Line Voom`,
+            voom_life_des: `Short videos`,
             ig_draw: `Instgram - Drawing`,
             ig_draw_des: `A place to collect my drawing.`,
             ig_life: `Instgram - Life`,

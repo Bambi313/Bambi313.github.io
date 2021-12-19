@@ -2,15 +2,18 @@
   <article class="_article">
     <div class="_container">
         <header>
+          <router-link class="_article_back" :to="`/${this.$i18n.locale}/blog/`" rel="noopener">
+            <i class="las la-angle-left"></i>
+            回部落格首頁
+          </router-link>
           <h1 class="_article_title">解決使用 vue cli 發佈到 git pages 時，子路徑抓不到內容的問題。</h1>
-
           <div class="_article_info">
             <span class="_article_time">2021/11/30</span>
             <div class="_article_tags">
               <span>coding</span>
-              <span>vue cli</span>
-              <span>github pages</span>
               <span>javascript</span>
+              <span>vue</span>
+              <span>github pages</span>
             </div>
           </div>
           
@@ -87,15 +90,40 @@
 
         </section>
 
-        <!-- <footer>
-          article footer
-        </footer> -->
+        <footer>
+          <div class="_article_recommend">
+            <router-link class="_article_recommend__btn prev" target="_self" :to="`/${this.$i18n.locale}/blog/funsiamo-cake-making-experience`" rel="noopener">
+              <div class="_article_recommend__arrow"><i class="las la-angle-left"></i>上一篇</div>
+              <div class="_article_recommend__title">做蛋糕囉～ Funsiamo 烘焙體驗</div>
+            </router-link>
+            <!-- <router-link class="_article_recommend__btn next" target="_self" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
+              <div class="_article_recommend__arrow">下一篇<i class="las la-angle-right"></i></div>
+              <div class="_article_recommend__title">解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。</div>
+            </router-link> -->
+          </div>
+        </footer>
     </div>
   </article>
 </template>
 
 <script>
-export default {
-  name: 'article1',
-}
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  export default {
+    // name: 'article1',
+    methods:{
+      
+    },
+    mounted(){
+      ScrollTrigger.create({
+        trigger: "._article",
+        start: "top top",
+        endTrigger: "footer",
+        pin: "header",
+        // markers: true
+      });
+    }
+  }
 </script>

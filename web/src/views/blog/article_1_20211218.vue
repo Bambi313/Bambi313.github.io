@@ -1,9 +1,18 @@
 <template>
   <article class="_article">
+    <!-- <div class="_article_category">
+      <ul class="_article_category__container">
+        <li>部落格首頁</li>
+      </ul>
+    </div> -->
+    
     <div class="_container">
         <header>
+          <router-link class="_article_back" :to="`/${this.$i18n.locale}/blog/`" rel="noopener">
+            <i class="las la-angle-left"></i>
+            回部落格首頁
+          </router-link>
           <h1 class="_article_title">做蛋糕囉～ Funsiamo 烘焙體驗</h1>
-
           <div class="_article_info">
             <span class="_article_time">2021/12/18</span>
             <div class="_article_tags">
@@ -29,7 +38,7 @@
             <li class="_article_summary__title"><span>花費</span>NTD 1000</li>
           </ul>
 
-          <h2 class="_shared_category__title">原因</h2>
+          <h2 class="_shared_category__title">正文</h2>
           <p>
             離開學校就沒有再做過點心之類的東西，
             因為家裡沒有適合的空間、工具，還要準備很多材料太麻煩，
@@ -68,13 +77,13 @@
           <figure class="_article_img_normal">
             <img src="../../assets/img/blog/funsiamo_2.jpg"/>
             <figcaption>
-              桌上是部分工具，有更多材料放在桌下的小推車
+              桌上有一些工具，還有更多材料放在桌下的小推車
             </figcaption>
           </figure>
 
           <p>
             基本上整個環境就是真實版的 Overcooked，
-            在玩 Overcooked 的時候我最怕遇到的就是攪拌器，
+            在玩 Overcooked 的時候我最怕遇到攪拌器了...
             超級容易攪到著火燒厝，
             不然就是把攪拌盆亂丟找不到<i class="lar la-grin-squint-tears"></i>
           </p>
@@ -101,23 +110,51 @@
             </figcaption>
           </figure>
           <p>
-            有剪了短短的紀錄影片，有興趣的歡迎點過去看看噢～
+            有剪了短短的紀錄影片，有興趣的歡迎點下圖過去看看噢～
           </p>
           <h2 class="_shared_category__title">短影片紀錄</h2>
-          <a class="_article_a_img" href="https://www.instagram.com/tv/CXkK4y5D4SS/?utm_source=ig_web_copy_link" target="_blank">
-            <img src="../../assets/img/blog/funsiamo_video_cover.jpg"/>
-          </a>
+          <div class="_article_video">
+            <a class="_article_video__a" href="https://www.instagram.com/tv/CXkK4y5D4SS/?utm_source=ig_web_copy_link" target="_blank">
+              <img src="../../assets/img/blog/funsiamo_video_cover.jpg"/>
+            </a>
+          </div>
+          
         </section>
 
-        <!-- <footer>
-          article footer
-        </footer> -->
+        <footer>
+          <div class="_article_recommend">
+            <!-- <router-link class="_article_recommend__btn prev" target="_self" :to="`/${this.$i18n.locale}/blog/funsiamo-cake-making-experience`" rel="noopener">
+              <div class="_article_recommend__arrow"><i class="las la-angle-left"></i>上一篇</div>
+              <div class="_article_recommend__title">做蛋糕囉～ Funsiamo 烘焙體驗</div>
+            </router-link> -->
+            <router-link class="_article_recommend__btn next" target="_self" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
+              <div class="_article_recommend__arrow">下一篇<i class="las la-angle-right"></i></div>
+              <div class="_article_recommend__title">解決使用 vue 發佈到 git page 時，router 抓不到內容的問題。</div>
+            </router-link>
+          </div>
+        </footer>
     </div>
   </article>
 </template>
 
 <script>
-export default {
-  name: 'article1',
-}
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  export default {
+    // name: 'article1',
+    methods:{
+      
+    },
+    mounted(){
+      ScrollTrigger.create({
+        trigger: "._article",
+        start: "top top",
+        endTrigger: "footer",
+        pin: "header",
+        // markers: true
+      });
+    }
+  }
 </script>

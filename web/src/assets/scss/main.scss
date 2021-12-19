@@ -1,12 +1,15 @@
-@import "./variables";
-@import "./reset";
-@import "./setting";
-@import "./shared";
-@import "./article";
+@import "./shared/variables";
+@import "./shared/reset";
+@import "./shared/setting";
+@import "./shared/shared";
 
+@import "./components/header";
+@import "./components/footer";
+
+@import "./works";
+@import "./about";
+@import "./article";
 @import "./blog";
-@import "./header";
-@import "./footer";
 @import "./home";
 
 body{
@@ -16,6 +19,7 @@ body{
     padding: 2rem 1rem;
     width: 95%;
     margin: auto;
+    // margin-top: 50px;
 
     @media screen and (min-width: $lg){
         max-width: 90%;

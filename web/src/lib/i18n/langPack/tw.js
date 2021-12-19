@@ -1,6 +1,7 @@
 const lang={
     header:{
         home: `首頁`,
+        works: `Line 貼圖`,
         about: `關於`,
         blog: `部落格`,
     },
@@ -14,14 +15,16 @@ const lang={
             all: `看全部`,
         },
         intro:{
-            hi: `嗨，我是班比。`,
-            des: `現任前端工程師。喜歡畫圖、動漫、遊戲、跳舞跟可愛的一切。<br>持續學習日文跟英文中。`,
+            hi: `嗨～歡迎`,
+            des: ``,
             know_more: `了解更多`,
             about: `關於我。`,
         },
         links: {
             line: `Line 貼圖`,
-            line_des: `太想用自己角色貼圖 ＋ WFH 之下的產物。<br>喜歡的人歡迎打包帶走：）`,
+            line_des: `太想用自己角色貼圖 ＋ WFH 之下的產物。`,
+            voom_life:`Line Voom`,
+            voom_life_des: `短影片、生活紀錄之類`,
             ig_draw: `Instgram - 繪圖`,
             ig_draw_des: `塗鴉聚集地。`,
             ig_life: `Instgram - 生活`,

@@ -4,6 +4,7 @@
     display: flex;
     margin-bottom: 2rem;
     // box-shadow: 0px 10px 20px 5px rgb(97 135 210 / 20%);
+    flex-direction: column;
 }
 ._home_intro__hi{
     color: $color-dark-gray;
@@ -24,11 +25,15 @@
 ._home_intro__des{
     font-size: .75rem;
     text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 ._home_intro__photo{
     display: flex;
     align-items: center;
-    margin-right: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 ._home_intro__img{
     width: 95px;
@@ -116,6 +121,11 @@
     img{
         width: 100%;
     }
+
+    @media screen and (min-width: $sm){
+        flex-basis: 12.5%;
+    }
+
 }
 ._home_stickers__btn{   
     cursor: pointer; 
