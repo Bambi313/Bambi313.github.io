@@ -13,6 +13,9 @@ const lang={
         },
         button:{
             all: `All stickers`,
+            sticker_tw: `Traditional Chinese ver`,
+            sticker_jp: `Japanese ver`,
+            sticker_en: `English ver`,
         },
         intro:{
             hi: `WELCOME`,
@@ -44,6 +47,11 @@ const lang={
             set2: {
                 title: `Bambi cares about you`,
                 des: `Show your loved ones that you really care about/love them.`
+            },
+            set3: {
+                title: `Bambi's merry christmas & happy new year`,
+                // note: `販售時間： 2021年08月25日～2023年08月24日 09:59`,
+                des: `Jingle bells, jingle bells, Jingle all the way.`
             }
         },
         updates:{

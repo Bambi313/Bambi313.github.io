@@ -12,7 +12,7 @@
             <i class="las la-angle-left"></i>
             回部落格首頁
           </router-link>
-          <h1 class="_article_title">做蛋糕囉～ Funsiamo 烘焙體驗</h1>
+          <h1 class="_article_title">歡樂姊妹聚-自己動手做蛋糕～ Funsiamo 烘焙體驗</h1>
           <div class="_article_info">
             <span class="_article_time">2021/12/18</span>
             <div class="_article_tags">
@@ -82,9 +82,9 @@
           </figure>
 
           <p>
-            基本上整個環境就是真實版的 Overcooked，
+            整個環境就是真實版的 Overcooked，
             在玩 Overcooked 的時候我最怕遇到攪拌器了...
-            超級容易攪到著火燒厝，
+            超級容易攪到火燒厝，
             不然就是把攪拌盆亂丟找不到<i class="lar la-grin-squint-tears"></i>
           </p>
           <p>
@@ -125,7 +125,7 @@
           <div class="_article_recommend">
             <!-- <router-link class="_article_recommend__btn prev" target="_self" :to="`/${this.$i18n.locale}/blog/funsiamo-cake-making-experience`" rel="noopener">
               <div class="_article_recommend__arrow"><i class="las la-angle-left"></i>上一篇</div>
-              <div class="_article_recommend__title">做蛋糕囉～ Funsiamo 烘焙體驗</div>
+              <div class="_article_recommend__title">歡樂姊妹聚-自己動手做蛋糕～ Funsiamo 烘焙體驗</div>
             </router-link> -->
             <router-link class="_article_recommend__btn next" target="_self" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
               <div class="_article_recommend__arrow">下一篇<i class="las la-angle-right"></i></div>

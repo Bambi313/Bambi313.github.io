@@ -12,7 +12,7 @@
                 <img src="../assets/img/blog/funsiamo_cover.jpg"/>
               </div>
               
-              <h3 class="_blog_item__title">做蛋糕囉～ Funsiamo 烘焙體驗</h3>
+              <h3 class="_blog_item__title">歡樂姊妹聚-自己動手做蛋糕～ Funsiamo 烘焙體驗</h3>
               <div class="_blog_item__summary"> 
                 <div class="_blog_item__des">
                   離開學校就沒有再做過點心之類的東西，

@@ -94,7 +94,7 @@
           <div class="_article_recommend">
             <router-link class="_article_recommend__btn prev" target="_self" :to="`/${this.$i18n.locale}/blog/funsiamo-cake-making-experience`" rel="noopener">
               <div class="_article_recommend__arrow"><i class="las la-angle-left"></i>上一篇</div>
-              <div class="_article_recommend__title">做蛋糕囉～ Funsiamo 烘焙體驗</div>
+              <div class="_article_recommend__title">歡樂姊妹聚-自己動手做蛋糕～ Funsiamo 烘焙體驗</div>
             </router-link>
             <!-- <router-link class="_article_recommend__btn next" target="_self" :to="`/${this.$i18n.locale}/blog/fix-router-redirect-while-using-vue-and-gitpage`" rel="noopener">
               <div class="_article_recommend__arrow">下一篇<i class="las la-angle-right"></i></div>

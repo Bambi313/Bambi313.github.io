@@ -127,19 +127,25 @@
     }
 
 }
+._home_stickers__btnWrap{
+    display: flex;
+    justify-content: center;
+}
 ._home_stickers__btn{   
     cursor: pointer; 
     padding: .75rem;
+    margin: 0 .5rem !important;
     color: $color-dark-gray;
     border: 1px solid $color-dark-gray;
     font-size: .75rem;
-    width: 80%;
+    max-width: 80%;
     margin: auto;
     border-radius: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: .2s all ease-in;
+    flex: 1;
 
     i{
         transform: translateX(0);

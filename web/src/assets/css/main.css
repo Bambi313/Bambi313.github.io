@@ -827,13 +827,23 @@ figure figcaption {
   }
 }
 
+._home_stickers__btnWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 ._home_stickers__btn {
   cursor: pointer;
   padding: 0.75rem;
+  margin: 0 0.5rem !important;
   color: #222;
   border: 1px solid #222;
   font-size: 0.75rem;
-  width: 80%;
+  max-width: 80%;
   margin: auto;
   border-radius: 2rem;
   display: -webkit-box;
@@ -847,6 +857,9 @@ figure figcaption {
           justify-content: center;
   -webkit-transition: 0.2s all ease-in;
   transition: 0.2s all ease-in;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 ._home_stickers__btn i {
   -webkit-transform: translateX(0);
