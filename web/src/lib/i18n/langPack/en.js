@@ -26,7 +26,7 @@ const lang={
         },
         links: {
             line: `Line stickers`,
-            line_des: `Since I really want to use my own stickers, I made these when I was working from home.<br>Grab them if you like.：）`,
+            line_des: `Stickers made by myself during WFH period.<br>Grab them if you like. <i class="las la-grin"></i>`,
             voom_life:`Line Voom`,
             voom_life_des: `Short videos`,
             ig_draw: `Instgram - Drawing`,
@@ -59,8 +59,12 @@ const lang={
         }
     },
     about: {
-        title: `This is an about page`,
-        subtitle: `關於這個網站`,
+        title: `Hi～<br>I'm Bambi.`,
+        description: `Currently working as a forntend Engineer.<br>My hobbits are drawing, watching animation, playing games and sleeping ... etc.<br><br>Love to do styling; But usually wearing simple and comfortable.<br><br> Has lived in both Japan and Canada about 0.5 ~ 1 year.<br>And still learning English and Japanese.<br>Prefer to make everything simple.`,
+        subtitle_1: `About this website`,
+        content_1: `I has been looking for a place to put all my works together for years,<br>but still can not find one that fit all of my necessities.<br>So I just made it by myself.<br><br> All contents will be add in Traditional Chinese first.<br> Whenever I have chance I'll update more languages version.<br>Feel free to correct me whenever you find anything weird.<br>Thanks a million <i class="las la-smile"></i>`,
+        subtitle_2: `Made by`,
+        content_2: `Vue, github pages<br>Font：<a target="_blank" href="https://justfont.com/huninn/?gclid=Cj0KCQiAqvaNBhDLARIsAH1Pq52RDi2mUCddU05Hl499eH2RaX9r7pDut2Wi1KpJ2P96LyaC7JGbdmUaArj4EALw_wcB">Huninn</a>`,
     }
 }
 export default lang

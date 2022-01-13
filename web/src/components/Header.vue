@@ -8,8 +8,8 @@
       <ul class="_header_links">
         <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}`" rel="noopener" v-html="$t('header.home')">Home</router-link></li>
         <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/works`" rel="noopener" v-html="$t('header.works')">Works</router-link></li>
-        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener" v-html="$t('header.about')">About</router-link></li>
         <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/blog`" rel="noopener" v-html="$t('header.blog')">Blog</router-link></li>
+        <li @click="toggleMenu( false )" class="_header_links__item"><router-link class="_header_links__a" :to="`/${this.$i18n.locale}/about`" rel="noopener" v-html="$t('header.about')">About</router-link></li>
       </ul>
       
       <div class="_header_lang _header_lang--desktop">

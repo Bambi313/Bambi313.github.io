@@ -39,7 +39,7 @@
             <p class="_home_links__des" v-html="$t('home.links.voom_life_des')"></p>
           </li>
           <li class="_home_link__item">
-            <a class="_home_links__title _home_links__title--instgram" href="https://www.instagram.com/bambitall/" target="_blank" rel="noopener">
+            <a class="_home_links__title _home_links__title--instgram" href="https://www.instagram.com/cute_bambis/" target="_blank" rel="noopener">
               <i class="_button_icon _button_icon--instgram lab la-instagram"></i>
               <span v-html="$t('home.links.ig_draw')">Instgram</span>
               <i class="_button_icon__angle las la-angle-right"></i>
@@ -138,7 +138,7 @@
         </div>
         <ul class="_home_news">
           <li class="_home_news__item">
-            <span class="_home_news__date">2021/12/19</span>
+            <span class="_home_news__date">2022/01/13</span>
             <span class="_home_news__title"  v-html="$t('home.updates.title_1')">網站第一版上線！</span>
           </li>
         </ul>
