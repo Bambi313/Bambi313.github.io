@@ -8,13 +8,16 @@
         <h4>操作區</h4>
         <div class="_homeView_chooseFile__item">
           <h4 class="_homeView_chooseFile__title">1. 選擇由 line 貼圖後台下載的 .csv</h4>
-          <p class="_homeView_chooseFile__des">目前僅支援單一貼圖分析，即檔名為 stats-<span class="_homeView_chooseFile__highlight">sticker_detail</span>-(sitckerId)-all-(date).csv</p>
+          <p class="_homeView_chooseFile__des">
+            目前僅支援單一貼圖分析，即檔名為 stats-<span class="_homeView_chooseFile__highlight">sticker_detail</span>-(sitckerId)-all-(date).csv。<br>
+            return-XXXXX.csv 以及 stats-sticker-all-XXXX.csv 都是不行的。
+          </p>
           <input class="_homeView_chooseFile__btn" type="file" @change="handleFileChange" multiple>
         </div>
-        <div v-if="tableData" class="_homeView_chooseFile__item">
-          <h4 class="_homeView_chooseFile__title">2. 選擇該組貼圖圖片</h4>
+        <div class="_homeView_chooseFile__item">
+          <h4 class="_homeView_chooseFile__title">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
           <p class="_homeView_chooseFile__des">檔名必須為 01.png, 02.png ... 40.png</p>
-          <input class="_homeView_chooseFile__btn" type="file" @change="handlePicChange" multiple>
+          <input class="_homeView_chooseFile__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
 
@@ -36,6 +39,10 @@
       <div>
         <Table :fields='fields' :tableData="tableData" @update="reSortData"></Table>
       </div>
+    </div>
+
+    <div class="_footer">
+      © 班比牧場 Bambiland 
     </div>
     <!-- <button @click="changeData">New Data</button> -->
   </div>
