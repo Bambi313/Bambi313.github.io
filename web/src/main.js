@@ -1,18 +1,14 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import i18n from './lib/i18n/lang'
-import store from './store/index'
-import VueMarkdown from 'vue-markdown'
+import VuePapaParse from 'vue-papa-parse'
+// import { BootstrapVue } from 'bootstrap-vue'
 
-import './assets/css/line-awesome.min.css'
-Vue.component('vue-markdown', VueMarkdown);
-Vue.config.productionTip = false
+import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-new Vue({
-  router,
-  store,
-  i18n,
-  // VueMarkdown,
-  render: h => h(App),
-}).$mount('#app')
+createApp(App)
+    .use(VuePapaParse)
+    .use(router)
+    // .use(BootstrapVue)
+    .mount('#app')

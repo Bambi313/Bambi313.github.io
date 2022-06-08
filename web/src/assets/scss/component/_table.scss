@@ -1,0 +1,26 @@
+.material-icons{
+    vertical-align: middle;
+    float: right;
+    opacity: .1;
+}
+
+._table_th{
+    &:hover{
+        cursor: pointer;
+    }
+    &.active{
+        background-color: $table-hightlight;
+        
+        .material-icons{
+            opacity: 1;
+        }
+    }
+}
+._table_td{
+    &.active{
+        background-color: $table-hightlight;
+    }
+}
+._table_img{
+    max-width: 100px;
+}

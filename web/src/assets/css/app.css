@@ -1,0 +1,85 @@
+._homeView_container {
+  width: 80%;
+  margin: auto;
+  padding: 1rem;
+}
+
+._homeView_chooseFile {
+  margin-bottom: 1rem;
+  border: solid 5px #f0f0f0;
+  padding: 1rem;
+}
+
+._homeView_chooseFile__item {
+  margin-bottom: 2rem;
+}
+._homeView_chooseFile__item:last-child {
+  margin-bottom: 0;
+}
+
+._homeView_chooseFile__title {
+  font-size: 1rem;
+}
+
+._homeView_chooseFile__des {
+  color: #888;
+}
+
+._homeView_chooseFile__highlight {
+  color: red;
+}
+
+._homeView_control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.material-icons {
+  vertical-align: middle;
+  float: right;
+  opacity: 0.1;
+}
+
+._table_th:hover {
+  cursor: pointer;
+}
+._table_th.active {
+  background-color: #ddd;
+}
+._table_th.active .material-icons {
+  opacity: 1;
+}
+
+._table_td.active {
+  background-color: #ddd;
+}
+
+._table_img {
+  max-width: 100px;
+}
+
+._guide_welcome {
+  font-size: 1rem;
+}
+
+._guide_subtitle {
+  font-size: 1em;
+  color: #888;
+  background-color: #ddd;
+  padding: 0.25rem;
+}
+
+._guide_function__ps {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+._guide_highlight_txt {
+  color: cornflowerblue;
+  font-weight: bold;
+}

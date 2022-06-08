@@ -1,0 +1,37 @@
+._homeView {
+}
+._homeView_container {
+    width: 80%;
+    margin: auto;
+    padding: 1rem;
+}
+._homeView_chooseFile {
+    margin-bottom: 1rem;
+    border: solid 5px#f0f0f0;
+    padding: 1rem;
+}
+._homeView_chooseFile__item {
+    margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+._homeView_chooseFile__title{
+    font-size: 1rem;
+}
+._homeView_chooseFile__des{
+    color: $color-lighter-gray;
+}
+._homeView_chooseFile__highlight{
+    // color: skyblue;
+    color: red;
+}
+._homeView_control {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+._homeView_control__item {
+
+}
