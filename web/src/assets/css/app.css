@@ -125,7 +125,7 @@ p {
   margin: 0 0.5rem;
 }
 
-.material-icons {
+._table_icon__arrowDown {
   vertical-align: middle;
   float: right;
   opacity: 0.1;
@@ -137,8 +137,12 @@ p {
 ._table_th.active {
   background-color: #ddd;
 }
-._table_th.active .material-icons {
+._table_th.active ._table_icon__arrowDown {
   opacity: 1;
+}
+._table_th.active.up ._table_icon__arrowDown {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 ._table_td.active {

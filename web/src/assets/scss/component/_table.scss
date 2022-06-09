@@ -1,18 +1,23 @@
-.material-icons{
+._table_icon__arrowDown {
     vertical-align: middle;
     float: right;
     opacity: .1;
 }
-
 ._table_th{
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
-    &.active{
+    &.active {
         background-color: $table-hightlight;
         
-        .material-icons{
-            opacity: 1;
+        ._table_icon__arrowDown {
+            opacity: 1;    
+        }
+
+        &.up {
+            ._table_icon__arrowDown {
+                transform: rotate(180deg);
+            }
         }
     }
 }

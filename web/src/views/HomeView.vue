@@ -24,19 +24,20 @@
         </div>
       </div>
       
-      <div class="_homeView_table" v-if="tableData">
+      <!-- <div class="_homeView_table" v-if="tableData"> -->
+      <div class="_homeView_table">
         <div v-if="stickerName">
           <h5 class="_homeView_table__title">{{ stickerName }} 結果</h5>
         </div>
         
         <div class="_homeView_control">
-          <div class="_homeView_control__item" v-if="startDate">
+          <div class="_homeView_control__item">
             開始日期:
-            <input :v-model="startDate" :value="startDate" disabled>
+            <input :v-model="startDate" :value="startDate" >
           </div>
-          <div class="_homeView_control__item" v-if="lastDate">
+          <div class="_homeView_control__item">
             結束日期:
-            <input v-if="lastDate" :v-model="lastDate" :value="lastDate" disabled>
+            <input :v-model="lastDate" :value="lastDate" >
           </div>
         </div>
 
@@ -62,7 +63,7 @@
 import _ from 'lodash';
 import * as moment from "moment/moment";
 import Guide from '@/components/Guide.vue';
-import Table from '@/components/TableComponent.vue';
+import Table from '@/components/Table.vue';
 import Header from '../components/Header.vue';
 import WelconMsg from '../components/WelconMsg.vue';
 
@@ -205,10 +206,14 @@ export default {
       }
       this.tableData = resArr;
     },
-    reSortData(sortBy){
+    reSortData(data){
       let conArr = [];
-      conArr = _.sortBy( this.tableData, function(o) { return o[sortBy]; })
-      this.tableData = _(conArr).reverse().value();
+      conArr = _.sortBy( this.tableData, function(o) { return o[data.ta]; })
+      if( data.decrease ){
+        this.tableData = _(conArr).reverse().value();
+      } else {
+        this.tableData = _(conArr).value();
+      }
     }
     // draw(newData) {
     //   let dataset = newData || this.sampleData;
