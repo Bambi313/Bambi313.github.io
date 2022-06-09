@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'openhuninn';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://cdn.jsdelivr.net/gh/justfont/open-huninn-font@master/font/jf-openhuninn-1.1.ttf')  format('truetype');
+}
+body, h1, h2, h3, h4, h5, h6{
+  font-family: 'openhuninn' !important;
+}
+p{
+  line-height: 1.8;
+}

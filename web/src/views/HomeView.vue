@@ -1,48 +1,56 @@
 <template>
   <div class="_homeView">
-    <div class="_homeView_container">
+    <div class="">
+      <Header />
+      <WelconMsg />
       <Guide />
     </div>
     <div class="_homeView_container">
       <div class="_homeView_chooseFile">
-        <h4>操作區</h4>
+        <h4 class="_homeView_chooseFile__title">開始上傳檔案</h4>
         <div class="_homeView_chooseFile__item">
-          <h4 class="_homeView_chooseFile__title">1. 選擇由 line 貼圖後台下載的 .csv</h4>
+          <h4 class="_homeView_chooseFile__subtitle">1. 選擇由 line 貼圖後台下載的 .csv</h4>
           <p class="_homeView_chooseFile__des">
-            目前僅支援單一貼圖分析，即檔名為 stats-<span class="_homeView_chooseFile__highlight">sticker_detail</span>-(sitckerId)-all-(date).csv。<br>
-            return-XXXXX.csv 以及 stats-sticker-all-XXXX.csv 都是不行的。
+            目前僅支援單一貼圖分析，即檔名為 stats-<span class="_homeView_chooseFile__highlight">sticker_detail</span>-(sitckerId)-all-(date) 的檔案，<br>
+            return-XXXXX.csv（收益報表）以及 stats-sticker-all-XXXX.csv（跨貼圖報表）都是不行的噢。<br>
+            想確定下載檔案的位置是否正確請參考<a class="_footer_link" href="https://www.bambiland.me/blogs-detail/line-sticker-analyze-tool-beta-launch" target="_blank">這篇文章</a>
           </p>
           <input class="_homeView_chooseFile__btn" type="file" @change="handleFileChange" multiple>
         </div>
         <div class="_homeView_chooseFile__item">
-          <h4 class="_homeView_chooseFile__title">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
+          <h4 class="_homeView_chooseFile__subtitle">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
           <p class="_homeView_chooseFile__des">檔名必須為 01.png, 02.png ... 40.png</p>
           <input class="_homeView_chooseFile__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
-
-      <div v-if="stickerName">
-        <h1>{{ stickerName }}</h1>
-      </div>
       
-      <div class="_homeView_control">
-        <div class="_homeView_control__item" v-if="startDate">
-          start date:
-          <input :v-model="startDate" :value="startDate" disabled>
+      <div class="_homeView_table" v-if="tableData">
+        <div v-if="stickerName">
+          <h5 class="_homeView_table__title">{{ stickerName }} 結果</h5>
         </div>
-        <div class="_homeView_control__item" v-if="lastDate">
-          last date:
-          <input v-if="lastDate" :v-model="lastDate" :value="lastDate" disabled>
+        
+        <div class="_homeView_control">
+          <div class="_homeView_control__item" v-if="startDate">
+            開始日期:
+            <input :v-model="startDate" :value="startDate" disabled>
+          </div>
+          <div class="_homeView_control__item" v-if="lastDate">
+            結束日期:
+            <input v-if="lastDate" :v-model="lastDate" :value="lastDate" disabled>
+          </div>
         </div>
-      </div>
 
-      <div>
         <Table :fields='fields' :tableData="tableData" @update="reSortData"></Table>
+        
       </div>
     </div>
 
+    <div class="_homeView_bottom">
+      操作有問題請至<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScqYKZccHfAeqmrb_GfiSvps9eJw-9SihZ8krmzrDLEoCJ_eA/viewform?usp=pp_url">問題回報表單</a>,
+      也歡迎到 <a target="_blank" href="https://docs.google.com/spreadsheets/d/1DmnFdTNJP_aGh3nmgx0th1_PzLz65qLn0LrJi2ABpqQ/edit?usp=sharing">line 貼圖分析許願池</a> 告訴我你想要的功能喔～
+    </div>
     <div class="_footer">
-      © 班比牧場 Bambiland 
+      © <a class="_footer_link" href="https://www.bambiland.me" target="_blank"> 班比牧場 Bambiland </a> 
     </div>
     <!-- <button @click="changeData">New Data</button> -->
   </div>
@@ -55,12 +63,16 @@ import _ from 'lodash';
 import * as moment from "moment/moment";
 import Guide from '@/components/Guide.vue';
 import Table from '@/components/TableComponent.vue';
+import Header from '../components/Header.vue';
+import WelconMsg from '../components/WelconMsg.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Table,
-    Guide
+    Guide,
+    Header,
+    WelconMsg
   },
   data() {
     return {
@@ -251,6 +263,8 @@ export default {
 </script>
 
 <style>
+/* @import "../assets/css/reset.css"; */
+@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 @import "../assets/css/app.css";
-/* @import "../assets/css/app.css"; */
+/* not ready @import "../assets/css/font.css"; */
 </style>

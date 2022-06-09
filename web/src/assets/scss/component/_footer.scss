@@ -4,6 +4,16 @@
     justify-content: center;
     padding: 1rem 0;
     font-size: .65rem;
-    color: #bbb;
+    color: $color-primary;
     // border-top: 1px solid #e8e8e8;
+}
+._footer_link{
+    color: $color-primary;
+    margin-left: 5px;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    
+    &:hover{
+        color: $color-dark;
+    }
 }

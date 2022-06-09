@@ -1,7 +1,10 @@
 @import "./utility/var";
+@import "./utility/global";
 
 @import "./views/homeView";
 
+@import "./component/welcomeMsg";
+@import "./component/header";
 @import "./component/table";
 @import "./component/guide";
 @import "./component/footer";
