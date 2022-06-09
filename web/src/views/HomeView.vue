@@ -83,8 +83,31 @@ export default {
       lastDate: null,
       jsonData: null,
       tableData: null,
-      fields: ['img', 'id', 'sent', 'receive', 'userSentTo', 'userReceive', '平均接收人數', '平均傳送次數/人'],
-
+      fields: [{
+          slug: 'img',
+          tw: '貼圖'
+        },{
+          slug: 'id',
+          tw: '編號'
+        },{
+          slug: 'sent',
+          tw: '貼圖傳送次數'
+        },{
+          slug: 'receive',
+          tw: '貼圖被接收次數'
+        },{
+          slug: 'userSentTo',
+          tw: '傳送貼圖人數'
+        },{
+          slug: 'userReceive',
+          tw: '接收貼圖人數'
+        }, {
+          slug: 'avgUserReceive',
+          tw: '平均接收人數'
+        }, {
+          slug: 'avgSent',
+          tw: '平均傳送次數/人'
+      }],
       // sampleData: [10, 20, 30]
     }
   },
@@ -198,9 +221,8 @@ export default {
         newData.receive = _.sumBy(data, function(o) { return o.receive; });
         newData.userSentTo = _.sumBy(data, function(o) { return o.userSentTo; });
         newData.userReceive = _.sumBy(data, function(o) { return o.userReceive; });
-        // customize
-        newData['平均接收人數'] = Math.round((newData.userReceive/newData.userSentTo) * 100) / 100;
-        newData['平均傳送次數/人'] = Math.round((newData.sent/newData.userSentTo) * 100) / 100;
+        newData.avgUserReceive = Math.round((newData.userReceive/newData.userSentTo) * 100) / 100;
+        newData.avgSent = Math.round((newData.sent/newData.userSentTo) * 100) / 100;
         resArr.push(newData);
         newData = {};
       }
