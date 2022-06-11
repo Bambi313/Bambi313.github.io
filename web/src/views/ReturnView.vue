@@ -1,41 +1,39 @@
 <template>
-  <div class="_homeView">
-    <div class="">
+  <div class="_returnView">
+    <!-- <div class="">
       <Header />
       <WelconMsg />
       <Guide />
-    </div>
-    <div class="_homeView_container">
-      <div class="_homeView_chooseFile">
-        <h4 class="_homeView_chooseFile__title">開始上傳檔案</h4>
-        <div class="_homeView_chooseFile__item">
-          <h4 class="_homeView_chooseFile__subtitle">1. 選擇由 line 貼圖後台下載的 .csv</h4>
-          <p class="_homeView_chooseFile__des">
-            目前僅支援單一貼圖分析，即檔名為 stats-<span class="_homeView_chooseFile__highlight">sticker_detail</span>-(sitckerId)-all-(date) 的檔案，<br>
-            return-XXXXX.csv（收益報表）以及 stats-sticker-all-XXXX.csv（跨貼圖報表）都是不行的噢。<br>
-            想確定下載檔案的位置是否正確請參考<a class="_footer_link" href="https://www.bambiland.me/blogs-detail/line-sticker-analyze-tool-beta-launch" target="_blank">這篇文章</a>
+    </div> -->
+    <div class="_returnView_container">
+      <div class="_returnView_chooseFile">
+        <h4 class="_returnView_chooseFile__title">開始上傳檔案</h4>
+        <div class="_returnView_chooseFile__item">
+          <h4 class="_returnView_chooseFile__subtitle">1. 選擇由 line 貼圖後台下載的 .csv</h4>
+          <p class="_returnView_chooseFile__des">
+            此工具支援 return-XXXXX.csv（收益報表） 的檔案，<br>
           </p>
-          <input class="_homeView_chooseFile__btn" type="file" @change="handleFileChange" multiple>
+          <input class="_returnView_chooseFile__btn" type="file" @change="handleFileChange" multiple>
         </div>
-        <div class="_homeView_chooseFile__item">
-          <h4 class="_homeView_chooseFile__subtitle">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
-          <p class="_homeView_chooseFile__des">檔名必須為 01.png, 02.png ... 40.png</p>
-          <input class="_homeView_chooseFile__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
+        <div class="_returnView_chooseFile__item">
+          <h4 class="_returnView_chooseFile__subtitle">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
+          <p class="_returnView_chooseFile__des">檔名必須為 01.png, 02.png ... 40.png</p>
+          <input class="_returnView_chooseFile__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
       
-      <div class="_homeView_table" v-if="tableData">
-      <!-- <div class="_homeView_table"> -->
+      <div class="_returnView_table" v-if="tableData">
+      <!-- <div class="_returnView_table"> -->
         <div v-if="stickerName">
-          <h5 class="_homeView_table__title">{{ stickerName }} 結果</h5>
+          <h5 class="_returnView_table__title">{{ stickerName }} 結果</h5>
         </div>
         
-        <div class="_homeView_control">
-          <div class="_homeView_control__item">
+        <div class="_returnView_control">
+          <div class="_returnView_control__item">
             開始日期:
             <input :v-model="startDate" :value="startDate" disabled>
           </div>
-          <div class="_homeView_control__item">
+          <div class="_returnView_control__item">
             結束日期:
             <input :v-model="lastDate" :value="lastDate" disabled>
           </div>
@@ -46,7 +44,7 @@
       </div>
     </div>
 
-    <div class="_homeView_bottom">
+    <div class="_returnView_bottom">
       操作有問題請至<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScqYKZccHfAeqmrb_GfiSvps9eJw-9SihZ8krmzrDLEoCJ_eA/viewform?usp=pp_url">問題回報表單</a>,
       也歡迎到 <a target="_blank" href="https://docs.google.com/spreadsheets/d/1DmnFdTNJP_aGh3nmgx0th1_PzLz65qLn0LrJi2ABpqQ/edit?usp=sharing">line 貼圖分析許願池</a> 告訴我你想要的功能喔～
     </div>
@@ -62,58 +60,75 @@
 // import * as d3 from "d3";
 import _ from 'lodash';
 // import * as moment from "moment/moment";
-import Guide from '@/components/Guide.vue';
+// import Guide from '@/components/Guide.vue';
 import Table from '@/components/Table.vue';
-import Header from '../components/Header.vue';
-import WelconMsg from '../components/WelconMsg.vue';
+// import Header from '../components/Header.vue';
+// import WelconMsg from '../components/WelconMsg.vue';
 
 export default {
   name: 'HomeView',
   components: {
     Table,
-    Guide,
-    Header,
-    WelconMsg
+    // Guide,
+    // Header,
+    // WelconMsg
   },
   data() {
     return {
       stickerName: '',
+      stickerId: '',
       startDate: null,
       lastDate: null,
+      allDataArr: null,
       jsonData: null,
       tableData: null,
       fields: [{
-          slug: 'img',
-          tw: '貼圖'
+          originIdx: 0,
+          slug: 'month',
+          tw: '月份'
         },{
+          originIdx: 3,
           slug: 'id',
-          tw: '編號'
+          tw: 'ID'
         },{
-          slug: 'sent',
-          tw: '貼圖傳送次數'
+          originIdx: 4,
+          slug: 'title',
+          tw: '名稱'
         },{
-          slug: 'receive',
-          tw: '貼圖被接收次數'
+          originIdx: 2,
+          slug: 'type',
+          tw: '類型'
         },{
-          slug: 'userSentTo',
-          tw: '傳送貼圖人數'
+          originIdx: 5,
+          slug: 'country',
+          tw: '販售國家'
         },{
-          slug: 'userReceive',
-          tw: '接收貼圖人數'
+          originIdx: 7,
+          slug: 'salesCounts',
+          tw: '販售組數'
+        },{
+          originIdx: 9,
+          slug: 'shareRate',
+          tw: '分潤比'
         }, {
-          slug: 'avgUserReceive',
-          tw: '平均接收人數'
-        }, {
-          slug: 'avgSent',
-          tw: '平均傳送次數/人'
-      }],
-      // sampleData: [10, 20, 30]
+          originIdx: 12,
+          slug: 'revenueShare',
+          tw: '金額'
+        }],
+        // for filter
+        monthArr: [],
+        idArr: [],
+        typeArr: [],
+        countryArr: [],
+
+        filterCategoryList: ['id', 'type', 'country'],
+        filterSrcArr: [],
+        
     }
   },
   methods: {
     handleFileChange (e) {
       let files = e.target.files;
-      
       for (let i = 0; i < files.length; i++) {
         this.$papa.parse (files[i], {
           complete: (results) => {
@@ -143,58 +158,40 @@ export default {
       });
     },
     restructureData (src) {
-      this.stickerName = src.shift()[0];
-      let dataArr = this.splitStickerArr(src);
-      let dataObj = this.arrToObj(dataArr);
-      this.jsonData = dataObj;
-      this.filterData(dataObj);
-      // this.draw();
+      // remove table head
+      src.shift()[0];
+      // remove last 2 empty element
+      src.splice(-2, 2);
+      
+      let dataArr = this.arrangeData(src);
+      this.allDataArr = _.concat( this.allDataArr, dataArr);
+      console.log('this.allDataArr',this.allDataArr);
+      
+      // this.jsonData = dataObj;
+      // this.filterData(dataObj);
     },
-    splitStickerArr(src){
+    arrangeData (src) {
       let res = [];
-      let container = [];
 
-      // remove last 1 empty element
-      src.splice(-1, 1);
-
-      for (let i = 0; i < src.length; i++) {
-        if (src[i].length === 1 && src[i][0] === '') {
-          // move to next sticker
-          res.push(container);
-          container = [];
-        } else {
-          container.push(src[i]);
-        }
-      }
-      return res;
-    },
-    arrToObj (src) {
-      let res = [];
-      src.forEach( (eachSticker) => {
-        let sticker = {};
-        sticker.no = eachSticker.shift()[0];
-        sticker.data = [];
-        let detail = {};
-
-        // remove field name
-        eachSticker.shift();
-
-        eachSticker.forEach( data => {
-          for (let l = 0; l < data.length; l++) {
-            detail.date = data[0];
-            detail.sent = parseInt(data[1]);
-            detail.receive = parseInt(data[2]);
-            detail.userSentTo = parseInt(data[3]);
-            detail.userReceive = parseInt(data[4]);
-          }
-          sticker.data.push(detail);
-          detail = {};
+      src.forEach( (item) => {
+        let itemObj = {};
+        this.fields.map((o)=>{
+          itemObj[o.slug] = item[o.originIdx];
         });
 
-        res.push(sticker);
-        sticker = {};
+        res.push(itemObj);
+        // console.log('itemObj',itemObj);
+        
+        //save data for filter
+        this.idArr.push(itemObj.id);
+        this.typeArr.push(itemObj.type);
+        this.countryArr.push(itemObj.country);
+        
+        itemObj = {};
       });
-
+      console.log('this.idArr',this.idArr);
+      console.log('this.typeArr',this.typeArr);
+      console.log('this.countryArr',this.countryArr);
       return res;
     },
     filterData (src) {
