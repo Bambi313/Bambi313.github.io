@@ -3,9 +3,14 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/sticker',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/',
+    name: 'allSticker',
+    component: () => import(/* webpackChunkName: "allSticker" */ '../views/AllStickerView.vue')
   },
   {
     path: '/return',

@@ -1,6 +1,6 @@
 <template>
   <div class="_guide">
-    <h2 class="_guide_title">貼圖傳送分析工具</h2>
+    <h2 class="_guide_title">貼圖傳送分析工具(比較不同組)</h2>
     <h3 class="_guide_subtitle">目前功能</h3>
     <div class="_guide_des">
       <div class="_guide_des__main">
@@ -10,15 +10,18 @@
           <li>貼圖被接收次數 / No. of Stickers Received</li>
           <li>傳送貼圖人數 / No. of Users Sent to <span class="_guide_dot _guide_dot--red"></span></li>
           <li>接收貼圖人數 / No. of Users who Received <span class="_guide_dot _guide_dot--red"></span></li>
-          <li>平均接收人數 <span class="_guide_des__ps">(註一)</span> <span class="_guide_dot _guide_dot--red"></span><span class="_guide_dot _guide_dot--green"></span></li>
-          <li>平均傳送次數 <span class="_guide_des__ps">(註二)</span> <span class="_guide_dot _guide_dot--red"></span><span class="_guide_dot _guide_dot--green"></span></li>
+          
+          <li>平均傳送次數/天 <span class="_guide_des__ps">(註一)</span> <span class="_guide_dot _guide_dot--red"></span><span class="_guide_dot _guide_dot--green"></span></li>
+          <li>平均傳送人次/天 <span class="_guide_des__ps">(註二)</span> <span class="_guide_dot _guide_dot--red"></span><span class="_guide_dot _guide_dot--green"></span></li>
+          <li>平均接收人次/天 <span class="_guide_des__ps">(註三)</span> <span class="_guide_dot _guide_dot--red"></span><span class="_guide_dot _guide_dot--green"></span></li>
         </ul>
       </div>
       
       <div class="_guide_des__note">
         <div class="_guide_des__ps">
-            <p>註一：接收貼圖人數 / 傳送貼圖人數，數字大於 1 代表貼圖一次被傳送給多人，例如群組之類。<br>
-            註二：貼圖傳送次數 / 傳送貼圖人數，代表使用者重複使用此張貼圖的平均次數。</p>
+            <p>註一：貼圖傳送次數 / 天數，平均每天被傳送的貼圖次數。<br>
+            註二：傳送貼圖人數 / 天數，平均每天使用到這組貼圖的人數。<br>
+            註三：接收貼圖人數 / 天數，平均每天接收到這組貼圖的人數。</p>
         </div>
         <div class="_guide_dotBlock">
           <p class="_guide_dotBlock__item"><span class="_guide_dot _guide_dot--red"></span> 目前 line 後台沒有顯示</p>
@@ -41,7 +44,7 @@
 
 <script>
 export default {
-  name: 'Guide',
+  name: 'GuideAll',
   props: {
     // msg: String
   }
