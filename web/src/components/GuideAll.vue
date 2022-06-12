@@ -4,7 +4,7 @@
     <h3 class="_guide_subtitle">目前功能</h3>
     <div class="_guide_des">
       <div class="_guide_des__main">
-        <p>可依據以下六個值顯示貼圖排序</p>
+        <p>可依據以下七個值顯示貼圖排序</p>
         <ul class="_guide_ul">
           <li>貼圖傳送次數 / No. of Stickers Sent</li>
           <li>貼圖被接收次數 / No. of Stickers Received</li>

@@ -13,6 +13,7 @@
       <div class="_control_des__item">
         <h4 class="_control_des__subtitle">2. 選擇該組貼圖圖片（完成第一步驟後才會顯示上傳按鈕）</h4>
         <p class="_control_des__des">檔名必須為 01.png, 02.png ... 40.png</p>
+        <p class="_control_des__des">* 不一定要上傳圖片，但有圖片可以幫助更快看出是哪張貼圖喔</p>
         <input class="_control_des__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
       </div>
     </div>

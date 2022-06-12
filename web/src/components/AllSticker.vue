@@ -12,6 +12,7 @@
         <div class="_control_des__item">
           <h4 class="_control_des__subtitle">2. 上傳貼圖首圖們（完成第一步驟後才會顯示上傳按鈕）</h4>
           <p class="_control_des__des">檔名必須為貼圖英文名，建議從 line 後台直接複製貼上 (副檔名必須為 .png)</p>
+          <p class="_control_des__des">* 不一定要上傳圖片，但有圖片可以幫助更快看出是哪組貼圖喔</p>
           <input class="_control_des__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
