@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
-  {
-    path: '/sticker',
-    name: 'home',
-    component: HomeView
-  },
   {
     path: '/',
     name: 'allSticker',
     component: () => import(/* webpackChunkName: "allSticker" */ '../views/AllStickerView.vue')
+  },
+  {
+    path: '/single-analyze',
+    name: 'singleSticker',
+    component: () => import(/* webpackChunkName: "singleSticker" */ '../views/SingleStickerView.vue')
   },
   {
     path: '/return',

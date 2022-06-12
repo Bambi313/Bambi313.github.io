@@ -1,0 +1,11 @@
+._menu {
+    padding: $padding-basic;
+}
+._menu_wrap {
+    display: flex;
+    align-items: center;
+}
+._menu_wrap__item {
+    text-decoration: none;
+    margin-right: 1rem;
+}

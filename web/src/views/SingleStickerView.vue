@@ -1,14 +1,13 @@
 <template>
-  <div class="_allSticker">
+  <div class="_homeView">
     <div class="">
       <!-- <Header />
       <WelconMsg /> -->
       <Menu />
-      <GuideAll />
+      <Guide />
     </div>
     
-    <AllSticker />
-
+    <SingleSticker />
     <Footer />
     <!-- <button @click="changeData">New Data</button> -->
   </div>
@@ -16,26 +15,30 @@
 
 <script>
 // @ is an alias to /src
-import GuideAll from '@/components/GuideAll.vue';
+// import * as d3 from "d3";
+// import _ from 'lodash';
+// import * as moment from "moment/moment";
+import Guide from '@/components/Guide.vue';
 // import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
+import Menu from '@/components/Menu.vue';
 // import WelconMsg from '../components/WelconMsg.vue';
-import Menu from '../components/Menu.vue';
-import AllSticker from '../components/AllSticker.vue';
+import SingleSticker from '../components/SingleSticker.vue';
 
 export default {
-  name: 'AllStickerView',
+  name: 'singleSticker',
   components: {
-    GuideAll,
+    // Table,
+    Guide,
     // Header,
     // WelconMsg,
+    Footer,
     Menu,
-    AllSticker,
-    Footer
+    SingleSticker
   },
   data() {
     return {
-      // stickerName: '',
+      // sampleData: [10, 20, 30]
     }
   },
   methods: {
@@ -85,6 +88,9 @@ export default {
     //   .attr("height", 500);
   },
   mounted(){
+    // const range = _.range(1, 3);
+    // console.log('range', range);
   }
 }
 </script>
+

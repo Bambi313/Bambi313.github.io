@@ -1,6 +1,6 @@
 <template>
   <div class="_guide">
-    <h2 class="_guide_title">貼圖傳送分析工具(比較不同組)</h2>
+    <h2 class="_guide_title">使用者愛用哪幾組貼圖？</h2>
     <h3 class="_guide_subtitle">目前功能</h3>
     <div class="_guide_des">
       <div class="_guide_des__main">
@@ -25,7 +25,7 @@
         </div>
         <div class="_guide_dotBlock">
           <p class="_guide_dotBlock__item"><span class="_guide_dot _guide_dot--red"></span> 目前 line 後台沒有顯示</p>
-          <p class="_guide_dotBlock__item"><span class="_guide_dot _guide_dot--green"></span> 班比自行新增</p>
+          <p class="_guide_dotBlock__item"><span class="_guide_dot _guide_dot--green"></span> 額外新增</p>
         </div>
       </div>
     </div>

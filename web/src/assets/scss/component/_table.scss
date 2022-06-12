@@ -1,9 +1,27 @@
+
+tr {
+    border-bottom: 1px solid #e4e4e4;
+}
+thead{
+    tr {
+        border-bottom: 2px solid $color-dark;
+    }
+}
+
+._table{
+    // font-size: .85rem;
+    width: 100%;
+}
 ._table_icon__arrowDown {
     vertical-align: middle;
     float: right;
     opacity: .1;
+    font-size: 2rem;
 }
 ._table_th{
+    padding: $padding-basic;
+    text-align: left;
+
     &:hover {
         cursor: pointer;
     }
@@ -11,7 +29,8 @@
         background-color: $table-hightlight;
         
         ._table_icon__arrowDown {
-            opacity: 1;    
+            opacity: 1;
+            color: $color-text-highlight;
         }
 
         &.up {
@@ -22,10 +41,13 @@
     }
 }
 ._table_td{
+    padding: $padding-basic;
+    vertical-align: middle;
+
     &.active{
         background-color: $table-hightlight;
     }
 }
 ._table_img{
-    max-width: 100px;
+    max-width: 80px;
 }

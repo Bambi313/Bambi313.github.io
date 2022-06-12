@@ -4,7 +4,7 @@
       <tr class="_table_tr">
         <!-- loop through each value of the fields to get the table header -->
         <th class="_table_th" :class="[isActive === field.slug ? 'active' : '', decrease ? '' : 'up']" v-for="field in fields" :key="field.slug" @click="handleFieldClick(field.slug)" > 
-          {{field.tw}} <span v-if="field.slug!='img'" class="material-icons _table_icon__arrowDown">keyboard_arrow_down</span>
+          {{field.tw}} <span v-if="field.slug!='img'" class="material-symbols-rounded _table_icon__arrowDown">arrow_drop_down</span>
         </th>
       </tr>
     </thead>
@@ -29,18 +29,21 @@ export default {
   name: 'Table',
   props:{
       tableData:{
-          type: Array,
+        type: Array,
       },
       fields:{
-          type: Array,
+        type: Array,
       },
       imgData:{
-          type: Array,
+        type: Array,
       },
+      active:{
+        type: String,
+      }
   },
   data() {
     return {
-      isActive: 'id',
+      isActive: this.active,
       decrease: true
     }
   },
@@ -65,6 +68,7 @@ export default {
     }
   },
   mounted(){
+    this.handleFieldClick(this.isActive);
   } 
 }
 </script>
