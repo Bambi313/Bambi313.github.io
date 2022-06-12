@@ -1,7 +1,7 @@
 <template>
   <div class="_control">
     <div class="_control_des">
-      <h4 class="_control_des__title">開始上傳檔案</h4>
+      <h4 class="_control_des__title">上傳檔案</h4>
       <div class="_control_des__item">
         <h4 class="_control_des__subtitle">1. 選擇由 line 貼圖後台下載的 .csv</h4>
         <p class="_control_des__des">

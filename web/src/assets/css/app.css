@@ -25,7 +25,7 @@ p {
 }
 
 ._control_des__title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
@@ -123,6 +123,7 @@ p {
 
 ._menu {
   padding: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 ._menu_title {
@@ -145,6 +146,7 @@ p {
   border: 1px solid #7d7d7d;
   padding: 0.5rem 0.75rem;
   border-radius: 2rem;
+  font-size: 0.8rem;
   -webkit-transition: 0.2s all ease-in;
   transition: 0.2s all ease-in;
 }
@@ -209,15 +211,30 @@ thead tr {
 
 ._guide_title {
   font-size: 1.25rem;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #7d7d7d;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+._guide_title__icon {
+  border-radius: 50%;
+  background-color: #444;
+  color: white;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 ._guide_subtitle {
   color: #7d7d7d;
   font-weight: bold;
   margin-top: 1rem !important;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: bold !important;
 }
 
@@ -236,7 +253,12 @@ thead tr {
 }
 
 ._guide_ul {
+  padding-left: 1rem;
   list-style: square;
+}
+
+._guide_ul__li {
+  font-size: 0.8rem;
 }
 
 ._guide_des__note {

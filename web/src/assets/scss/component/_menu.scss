@@ -1,5 +1,8 @@
 ._menu {
     padding: $padding-basic;
+    // border-top: 1px solid $color-primary;
+    // border-bottom: 1px solid $color-primary;
+    margin-bottom: 1rem;
 }
 ._menu_title {
     margin-bottom: .5rem;
@@ -15,6 +18,7 @@
     border: 1px solid $color-primary;
     padding: .5rem $padding-basic;
     border-radius: 2rem;
+    font-size: .8rem;
     transition: .2s all ease-in;
 
     &:hover{

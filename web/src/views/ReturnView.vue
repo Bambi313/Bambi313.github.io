@@ -7,7 +7,7 @@
     </div> -->
     <div class="_returnView_container">
       <div class="_returnView_chooseFile">
-        <h4 class="_returnView_chooseFile__title">開始上傳檔案</h4>
+        <h4 class="_returnView_chooseFile__title">上傳檔案</h4>
         <div class="_returnView_chooseFile__item">
           <h4 class="_returnView_chooseFile__subtitle">1. 選擇由 line 貼圖後台下載的 .csv</h4>
           <p class="_returnView_chooseFile__des">

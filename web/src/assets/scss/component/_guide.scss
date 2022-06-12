@@ -3,8 +3,18 @@
 }
 ._guide_title{
     font-size: 1.25rem;
-    padding-bottom: 5px;
-    border-bottom: 1px solid $color-primary;
+    padding-bottom: .25rem;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+}
+._guide_title__icon{
+    border-radius: 50%;
+    background-color: $color-dark;
+    color: white;
+    font-size: 1.25rem;
+    padding: .5rem;
+    margin-right: .5rem;
 }
 ._guide_subtitle {
     color: $color-primary;
@@ -12,7 +22,7 @@
     // background-color: $table-hightlight;
     // padding: .25rem;
     margin-top: 1rem !important;
-    font-size: 1rem;
+    font-size: .85rem;
     font-weight: bold !important;
 }
 ._guide_des {
@@ -22,8 +32,11 @@
     flex-wrap: wrap;
 }
 ._guide_ul{
-    // padding-left: 1rem;
+    padding-left: 1rem;
     list-style: square;
+}
+._guide_ul__li{
+    font-size: .8rem;
 }
 ._guide_des__note{
     padding: $padding-basic;
