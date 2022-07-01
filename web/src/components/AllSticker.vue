@@ -54,31 +54,40 @@ export default {
       tableData: null,
       fields: [{
           slug: 'img',
-          tw: '首圖'
+          tw: '首圖',
+          sortable: false
         },{
           slug: 'name',
-          tw: '貼圖名稱'
+          tw: '貼圖名稱',
+          sortable: false
         },{
           slug: 'sent',
-          tw: '貼圖傳送次數'
+          tw: '貼圖傳送次數',
+          sortable: true
         },{
           slug: 'receive',
-          tw: '貼圖被接收次數'
+          tw: '貼圖被接收次數',
+          sortable: true
         },{
           slug: 'userSentTo',
-          tw: '傳送貼圖人數'
+          tw: '傳送貼圖人數',
+          sortable: true
         },{
           slug: 'userReceive',
-          tw: '接收貼圖人數'
+          tw: '接收貼圖人數',
+          sortable: true
         }, {
           slug: 'avgSent',
-          tw: '平均傳送次數/天'
+          tw: '平均傳送次數/天',
+          sortable: true
         }, {
           slug: 'avgUserSent',
-          tw: '平均傳送人次/天'
+          tw: '平均傳送人次/天',
+          sortable: true
         }, {
           slug: 'avgUserReceive',
-          tw: '平均接收人次/天'
+          tw: '平均接收人次/天',
+          sortable: true
       }],
       // sampleData: [10, 20, 30]
     }
@@ -188,7 +197,8 @@ export default {
       // sum
       let resArr = [];
       let newData = {};
-  
+      let no = 0;
+      
       for (let i = 0; i < src.length; i++) {
         newData.name = src[i].name;
         newData.id = src[i].no;
@@ -202,10 +212,13 @@ export default {
         newData.avgSent = Math.round((newData.sent/days) * 100) / 100;
         newData.avgUserSent = Math.round((newData.userSentTo/days) * 100) / 100;
         newData.avgUserReceive = Math.round((newData.userReceive/days) * 100) / 100;
-        
+        newData.no = no;
+        no++;
         resArr.push(newData);
         newData = {};
       }
+      console.log('resArr',resArr);
+      
       this.tableData = resArr;
     },
     reSortData(data){

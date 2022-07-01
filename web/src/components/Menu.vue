@@ -4,6 +4,7 @@
     <div class="_menu_wrap">
       <router-link class="_menu_wrap__item" to="/">愛用貼圖排行(以組為單位)</router-link>
       <router-link class="_menu_wrap__item" to="/single-analyze">愛用貼圖排行(以張為單位)</router-link>
+      <router-link class="_menu_wrap__item" to="/return">收益排行</router-link>
     </div>
   </div>
 </template>

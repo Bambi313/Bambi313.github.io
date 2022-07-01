@@ -47,7 +47,7 @@ import _ from 'lodash';
 import Table from './Table.vue';
 
 export default {
-  name: 'AllSticker',
+  name: 'SingleSticker',
   components: {
     Table,
   },
@@ -60,28 +60,36 @@ export default {
       tableData: null,
       fields: [{
           slug: 'img',
-          tw: '貼圖'
+          tw: '貼圖',
+          sortable: false
         },{
           slug: 'id',
-          tw: '編號'
+          tw: '編號',
+          sortable: true
         },{
           slug: 'sent',
-          tw: '貼圖傳送次數'
+          tw: '貼圖傳送次數',
+          sortable: true
         },{
           slug: 'receive',
-          tw: '貼圖被接收次數'
+          tw: '貼圖被接收次數',
+          sortable: true
         },{
           slug: 'userSentTo',
-          tw: '傳送貼圖人數'
+          tw: '傳送貼圖人數',
+          sortable: true
         },{
           slug: 'userReceive',
-          tw: '接收貼圖人數'
+          tw: '接收貼圖人數',
+          sortable: true
         }, {
           slug: 'avgUserReceive',
-          tw: '平均接收人數/張'
+          tw: '平均接收人數/張',
+          sortable: true
         }, {
           slug: 'avgSent',
-          tw: '平均傳送次數/人'
+          tw: '平均傳送次數/人',
+          sortable: true
       }],
     }
   },
@@ -181,7 +189,8 @@ export default {
       // sum
       let resArr = [];
       let newData = {};
-
+      let no = 0;
+    
       for (let i = 0; i < src.length; i++) {
         newData.id = src[i].no;
         let data = src[i].data;
@@ -190,7 +199,10 @@ export default {
         newData.userSentTo = _.sumBy(data, function(o) { return o.userSentTo; });
         newData.userReceive = _.sumBy(data, function(o) { return o.userReceive; });
         newData.avgUserReceive = Math.round((newData.userReceive/newData.userSentTo) * 100) / 100;
-        newData.avgSent = Math.round((newData.sent/newData.userSentTo) * 100) / 100;
+        newData.avgSent = Math.round((newData.sent/newData.userSentTo) * 100) / 100
+        newData.no = no;
+        no++;
+
         resArr.push(newData);
         newData = {};
       }

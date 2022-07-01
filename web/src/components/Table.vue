@@ -3,14 +3,13 @@
     <thead>
       <tr class="_table_tr">
         <!-- loop through each value of the fields to get the table header -->
-        <th class="_table_th" :class="[isActive === field.slug ? 'active' : '', decrease ? '' : 'up']" v-for="field in fields" :key="field.slug" @click="handleFieldClick(field.slug)" > 
-          {{field.tw}} <span v-if="field.slug!='img'" class="material-symbols-rounded _table_icon__arrowDown">arrow_drop_down</span>
+        <th class="_table_th" :class="[isActive === field.slug ? 'active' : '', decrease ? '' : 'up']" v-for="field in fields" :key="field.slug" @click="handleFieldClick(field.slug, field.sortable)" > 
+          {{field.tw}} <span v-if="field.sortable" class="material-symbols-rounded _table_icon__arrowDown">arrow_drop_down</span>
         </th>
       </tr>
     </thead>
     <tbody>
-      <!-- {{ tableData }} -->
-      <tr v-for="item in tableData" :key='item.id'>
+      <tr v-for="item in tableData" :key='item.no'>
         <td v-for="field in fields" :key='field.slug' class="_table_td" :class="isActive === field.slug ? 'active' : ''">
           <div v-if="field.slug === 'img'">
             <img class="_table_img" :src="item[field.slug]" />
@@ -48,7 +47,9 @@ export default {
     }
   },
   methods:{
-    handleFieldClick(field){
+    handleFieldClick(field, sortable){
+      if(!sortable) return;
+      
       this.toggleIcon(field);
       this.sortTable({ 
         "ta" : field,
