@@ -24,14 +24,16 @@
         <h5 class="_control_table__title">{{ stickerName }} 結果</h5>
       </div>
       
-      <div class="_control_time">
-        <div class="_control_time__item">
-          開始日期
-          <input :v-model="startDate" :value="startDate" disabled>
-        </div>
-        <div class="_control_time__item">
-          結束日期
-          <input :v-model="lastDate" :value="lastDate" disabled>
+      <div class="_control_block">
+        <div class="_control_block__wrap">
+          <div class="_control_time__item">
+            開始日期
+            <input :v-model="startDate" :value="startDate" disabled>
+          </div>
+          <div class="_control_time__item">
+            結束日期
+            <input :v-model="lastDate" :value="lastDate" disabled>
+          </div>
         </div>
       </div>
 
