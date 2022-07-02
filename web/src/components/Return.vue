@@ -22,48 +22,84 @@
         <h5 class="_control_table__title">{{ stickerName }} 結果</h5>
       </div>
       
-      <div class="_control_time">
-        <div class="_control_time__item">
-          開始月份:
-          <input :v-model="startDate" :value="startDate" disabled>
-        </div>
-        <div class="_control_time__item">
-          結束月份:
-          <input :v-model="lastDate" :value="lastDate" disabled>
+      <div class="_control_block">
+        <div class="_control_block__wrap">
+          <div class="_control_time__item">
+            開始月份:
+            <input :v-model="startDate" :value="startDate" disabled>
+          </div>
+          <div class="_control_time__item">
+            結束月份:
+            <input :v-model="lastDate" :value="lastDate" disabled>
+          </div>
         </div>
         <div class="_control_switch">
           <div class="_control_switch__btn" :class="viewTotal ? 'active':''" @click="switchViewType('total')">顯示總和</div>
           <div class="_control_switch__btn" :class="viewTotal ? '':'active'" @click="switchViewType('separate')">全部展開</div>
         </div>
+        
         <div class="_filter">
-          <span class="_filter_icon material-symbols-rounded">
-          filter_list
+          <span class="_filter_icon material-symbols-rounded" @click="switchFilter()">
+            filter_list
           </span>
           
-          <div class="_filter_block">
+          <div class="_filter_block" :class="openFilter ? 'active':''">
             <div class="_filter_block__control">
               <div class="_filter_block__controlBtn" @click="updateFilter('none')">全部取消</div>
               <div class="_filter_block__controlBtn" @click="updateFilter('all')">全部選取</div>
             </div>
             <div class="_filter_block__height">
-              <ul class="_filter_category" v-for="(category,key) in filterSrcObj" :key="key">
-                <li class="_filter_category__item">
-                  <div class="_filter_category__name">
-                    {{key}}
-                  </div>
-                  <ul class="_filter_category__ul">
-                    <li class="_filter_category__li" v-for="(item,idx) in category" :key="idx"> 
-                      <div class="_filter_checkbox">
-                        <input class="_filter_checkbox__input" :id="item" v-model="filterShowArr" :checked="isChecked(item)" type="checkbox" :value="item"/>
-                      </div>
-                      <label :for="item">{{item}}</label>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+                <ul class="_filter_category">
+                  <li class="_filter_category__item">
+                    <div class="_filter_category__name">
+                      Type
+                    </div>
+                    <ul class="_filter_category__ul">
+                      <li class="_filter_category__li" v-for="(type,idx) in typeArr" :key="idx"> 
+                        
+                        <div class="_filter_checkbox" >
+                          <input class="_filter_checkbox__input" :id="type" v-model="chosenType" type="checkbox" :value="type"/>
+                        </div>
+                        <label :for="type">{{type}}</label>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="_filter_category">
+                  <li class="_filter_category__item">
+                    <div class="_filter_category__name">
+                      Country
+                    </div>
+                    <ul class="_filter_category__ul">
+                      <li class="_filter_category__li" v-for="(country,idx) in countryArr" :key="idx"> 
+                        
+                        <div class="_filter_checkbox" >
+                          <input class="_filter_checkbox__input" :id="country" v-model="chosenCountry" type="checkbox" :value="country"/>
+                        </div>
+                        <label :for="country">{{country}}</label>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="_filter_category">
+                  <li class="_filter_category__item">
+                    <div class="_filter_category__name">
+                      Id
+                    </div>
+                    <ul class="_filter_category__ul">
+                      <li class="_filter_category__li" v-for="(id,idx) in idArr" :key="idx"> 
+                        
+                        <div class="_filter_checkbox" >
+                          <input class="_filter_checkbox__input" :id="id" v-model="chosenId" type="checkbox" :value="id"/>
+                        </div>
+                        <label :for="id">{{id}}</label>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
             </div>
             <div class="_filter_bottom">
-              <div class="_filter_bottom__submit" @click="updateFilter()">
+              <div class="_filter_bottom__submit" @click="filterData()">
                 送出
               </div>
             </div>
@@ -90,7 +126,8 @@ export default {
   },
   data() {
     return {
-      viewTotal: true,
+      viewTotal: false,
+      openFilter: false,
       stickerName: '',
       stickerId: '',
       startDate: null,
@@ -149,30 +186,28 @@ export default {
         countryArr: [],
 
         filterCategoryList: ['type', 'country', 'id'],
-        filterSrcObj: {},
-        filterShowArr: []
-        // fileLength: 0,
+        chosenType: [],
+        chosenCountry: [],
+        chosenId: [],
     }
   },
   methods: {
-    isChecked(item){
-      return _.includes(this.filterShowArr, item);
+    switchFilter(){
+      this.openFilter = !this.openFilter;
     },
     updateFilter(val) {
       if(val === 'all'){
-        this.filterShowArr = _.flatMap(this.filterSrcObj);
-        // this.filterShowArr = this.filterSrcObj;
+        this.chosenId = this.idArr;
+        this.chosenCountry = this.countryArr;
+        this.chosenType = this.typeArr;
       } else if (val === 'none'){
-        this.filterShowArr = [];
-        // this.filterShowArr = {};
+        this.chosenId = [];
+        this.chosenCountry = [];
+        this.chosenType = [];
       }
-      // else {
-      // console.log('照值顯示 filterShowArr', this.filterShowArr);
-      // }
     },
     handleFileChange (e) {
       let files = e.target.files;
-      // this.fileLength = files.length;
 
       for (let i = 0; i < files.length; i++) {
         this.$papa.parse (files[i], {
@@ -212,11 +247,10 @@ export default {
     },
     arrangeObjData( allDataArr ){
       this.getFilterSrcArr();
-
-      let res = [];
-      let idArr = JSON.parse(JSON.stringify( this.filterSrcObj.id ));
       
-      idArr.map((id)=>{
+      let res = [];
+      
+      this.idArr.map((id)=>{
         res.push( _.filter(allDataArr, {'id': id }) );
       });
 
@@ -246,12 +280,12 @@ export default {
       return res;
     },
     getFilterSrcArr(){
-      console.log('getFilterSrcArr');
-      
-      this.filterCategoryList.map((o)=>{
-        this.filterSrcObj[o] = _.uniq( JSON.parse(JSON.stringify( this[o+'Arr'])) );
-      });
-      this.filterShowArr = _.flatMap(this.filterSrcObj);
+      this.chosenId = _.uniq( JSON.parse(JSON.stringify(this.idArr)));
+      this.idArr = this.chosenId;
+      this.chosenType = _.uniq( JSON.parse(JSON.stringify(this.typeArr)));
+      this.typeArr = this.chosenType;
+      this.chosenCountry = _.uniq( JSON.parse(JSON.stringify(this.countryArr)));
+      this.countryArr = this.chosenCountry;
 
       // arrange month
       let tempMonthArr = _.sortedUniq( JSON.parse(JSON.stringify( this.monthArr )) )
@@ -262,18 +296,16 @@ export default {
       
       // set startDate
       this.startDate = this.monthArr[0];
-      // set startDate
+      // set lastDate
       this.lastDate = this.monthArr[this.monthArr.length-1];
-
-      console.log('this.filterSrcObj',this.filterSrcObj);
-      
     },
-    filterData (src, type) {
+    filterData () {
       let resArr = [];
       let no = 0;
-      if(type === 'total') {
+  
+      if(this.viewTotal) {
         // total
-        src.forEach( (item) => {
+        this.jsonData.forEach( (item) => {
           // console.log('item',item);
           let row = {
             salesCounts: 0,
@@ -282,40 +314,55 @@ export default {
           }
 
           item.forEach( (e) => {
-            row.id = e.id;
-            row.title = e.title;
-            row.type = e.type;
-            if( e.salesCounts != "" ){
-              row.salesCounts += parseInt(e.salesCounts);
+            if(_.includes(this.chosenId, e.id) && _.includes(this.chosenCountry, e.country) && _.includes(this.chosenType, e.type)) {
+              row.id = e.id;
+              row.title = e.title;
+              row.type = e.type;
+              if( e.salesCounts != "" ){
+                row.salesCounts += parseInt(e.salesCounts);
+              }
+              row.country.push(e.country);
+              row.revenueShare += parseInt(e.revenueShare);
             }
-            row.country.push(e.country);
-            row.revenueShare += parseInt(e.revenueShare);
           });
 
-          row.country = _.join(_.uniq(row.country), ',');
-          row.no = no;
-          no ++;
-          resArr.push(row);
+          if(row.country != ''){
+            row.country = _.join(_.uniq(row.country), ',');
+            row.no = no;
+            no ++;
+            console.log('row',row);
+            
+            resArr.push(row);
+          }
         });
       } else {
         // separate
-        let no = 0;
-        src.forEach( (item) => {
+        // let no = 0;
+        this.jsonData.forEach( (item) => {
           item.forEach( (e) => {
-            e.no = no;
-            no++;
-            resArr.push(e);
+            if(_.includes(this.chosenId, e.id) && _.includes(this.chosenCountry, e.country) && _.includes(this.chosenType, e.type)) {
+              e.no = no;
+              no++;
+              resArr.push(e);
+            }
           });
         });
 
       }
-      
-      this.tableData = resArr;
-    },
-    reSortData(data){
-      // console.log('data.ta',data.ta);
       // console.log('this.tableData',this.tableData);
       
+      // resArr = _.filter(resArr, function(o) {
+      //   // return _.includes(this.chosenId, o.id);
+      //   console.log('oooo',_.includes(this.chosenId, o.id));
+        
+      //   return o; 
+      // });
+
+      this.tableData = resArr;
+
+      this.openFilter = false;
+    },
+    reSortData(data){
       let conArr = [];
       conArr = _.sortBy( this.tableData, function(o) { return parseInt(o[data.ta]); })
       if( data.decrease ){
@@ -330,14 +377,16 @@ export default {
       } else {
         this.viewTotal = false;
       }
-      this.filterData(this.jsonData, type);
+      this.filterData();
     }
   },
   watch: {
     allDataArr: function( data ) {
       this.jsonData = this.arrangeObjData( data );
-      this.filterData(this.jsonData, 'total');
+      this.filterData();
     },
+    chosenId: function() {
+    }
   },
   created(){
   },
