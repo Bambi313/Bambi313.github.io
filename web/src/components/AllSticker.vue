@@ -16,7 +16,12 @@
           <input class="_control_des__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
-      
+      <button @click="changeData">New Data</button>
+      <div class="_control_table">
+        <div id="graph">
+        </div>
+      </div>
+
       <div class="_control_table" v-if="tableData">
         <div class="_control_block">
           <div class="_control_block__wrap">
@@ -41,6 +46,7 @@
 import _ from 'lodash';
 import * as moment from "moment/moment";
 import Table from './Table.vue';
+import * as d3 from "d3";
 
 export default {
   name: 'AllSticker',
@@ -91,7 +97,20 @@ export default {
           tw: '平均接收人次/天',
           sortable: true
       }],
-      // sampleData: [10, 20, 30]
+      sampleData: [
+        { x: 1, y: 80 },
+        { x: 2, y: 40 },
+        { x: 3, y: 50 },
+        { x: 4, y: 100 },
+        { x: 5, y: 20 },
+        { x: 6, y: 40 },
+        { x: 7, y: 50 },
+        { x: 8, y: 100 },
+        { x: 9, y: 20 },
+        { x: 10, y: 50 },
+        { x: 11, y: 100 },
+        { x: 12, y: 20 }
+      ]
     }
   },
   methods: {
@@ -127,42 +146,62 @@ export default {
       });
     },
     restructureData (src) {
-      // this.stickerName = src.shift()[0];
       let dataArr = this.splitStickerArr(src);
+      
+      // for d3
+      let dataArrD3 =_.cloneDeep(dataArr);
+      // console.log('dataArrD3',dataArrD3);
+      this.arrangeDataForD3(dataArrD3);
+          
+      // for table
       let dataObj = this.arrToObj(dataArr);
       this.jsonData = dataObj;
       this.filterData(dataObj);
       // this.draw();
     },
-    splitStickerArr(src){
+    splitStickerArr(originData){
       let res = [];
-      let container = [];
-
       // remove last 1 empty element
-      src.splice(-1, 1);
+      originData.splice(-1, 1);
 
-      for (let i = 0; i < src.length; i++) {
-        if (src[i].length === 1 && src[i][0] === '') {
-          // move to next sticker
-          res.push(container);
-          container = [];
+      let stickerGroup = [];
+      let stickerTemp = [];
+      for (let i = 0; i < originData.length; i++) {
+        if (originData[i].length === 1) {
+          if(originData[i][0] != ''){
+            stickerTemp.push(originData[i]);  
+          } else {
+            stickerGroup.push(stickerTemp);
+            stickerTemp = []; 
+          }
         } else {
-          container.push(src[i]);
-          // console.log('src[i]',src[i]);
+          if(!originData[i][0].includes('Date')){
+            stickerTemp.push(originData[i]);
+          }
         }
       }
-      res = _.remove(res, function(n) {
-        // console.log('n',n);
-        // console.log('n.length',n.length);
-        return n.length > 2;
+      // remove no counts data
+      stickerGroup = _.remove(stickerGroup, function(n) {
+        return n.length > 1;
       });
-      // console.log('splitStickerArr res', res);
-      
+      res = stickerGroup;
       return res;
     },
-    arrToObj (src) {
+    arrangeDataForD3(d3SrcArr) {
+      // console.log('d3SrcArr',d3SrcArr);
+      let setObj = {
+        name : '',
+      };
+      d3SrcArr.map((e)=>{
+        console.log('e',e);
+        setObj.name = e.shift()[0];
+        console.log('setObj.name', setObj.name)
+      });
+
+    },
+    arrToObj (srcArr) {
       let res = [];
-      src.forEach( (item) => {
+      srcArr.forEach( (item) => {
         let sticker = {};
         sticker.name = item.shift()[0];
         sticker.data = [];
@@ -219,9 +258,9 @@ export default {
         resArr.push(newData);
         newData = {};
       }
-      console.log('resArr',resArr);
-      
       this.tableData = resArr;
+
+      // this.drawD3();
     },
     reSortData(data){
       let conArr = [];
@@ -231,55 +270,94 @@ export default {
       } else {
         this.tableData = _(conArr).value();
       }
-    }
-    // draw(newData) {
-    //   let dataset = newData || this.sampleData;
-    //   let circle = d3.select("svg").selectAll("circle");
-    //   let update = circle.data(dataset);
-    //   let enter = update.enter();
-    //   let exit = update.exit();
+    },
+    drawD3(){
+      d3.select("#graph")
+        .append("svg")
+        // .attr("width", 250)
+        // .attr("height", 250)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 960 500")
+        .style("border", "1px solid #00000060");
 
-    //   update
-    //     .attr("cx", function(d, i) {
-    //       return (i + 1) * 100;
-    //     })
-    //     .attr("cy", 100)
-    //     .attr("r", function(d) {
-    //       return d;
-    //     })
-    //     .style("fill", "red");
+      this.draw();
+    },
+    draw(newData) {
+      console.log('draw newData',newData);
+      
+      let dataset = newData || this.sampleData;
+      let Xdata = dataset.map(function(d) {
+        return d.x;                              // [10, 70, 60, 30, 90]
+      });
+      let Xscale = d3
+        .scaleLinear()
+        .domain([0, d3.max(Xdata)])              // 座標 X 軸的長度將會依據 0 至 Xdata 資料的最大值
+        .range([0, 800]);                        // 換算成實際上會輸出的長度 0 至 200
 
-    //   enter
-    //     .append("circle")
-    //     .attr("cx", function(d, i) {
-    //       return (i + 1) * 100;
-    //     })
-    //     .attr("cy", 100)
-    //     .attr("r", function(d) {
-    //       return d;
-    //     })
-    //     .style("fill", "red");
+      let Xaxis = d3.axisBottom(Xscale).tickFormat(function(d) {
+        return d + "月";
+      });
+      let gXaxis = d3
+        .select("svg")
+        .append("g")
+        .attr("transform", "translate(30,220)");
 
-    //   exit.remove();
-    // },
-    // changeData() {
-    //   this.sampleData = [5, 30];
-    // },
+        Xaxis(gXaxis);
+
+
+        let Ydata = dataset.map(function(d) {
+          return d.y;
+        });
+        let Yscale = d3
+          .scaleLinear()
+          .domain([0, d3.max(Ydata)])
+          .range([200, 0]);
+        let Yaxis = d3.axisLeft(Yscale);
+        let gYaxis = d3
+          .select("svg")
+          .append("g")
+          .attr("transform", "translate(30,20)");
+
+        Yaxis(gYaxis);
+
+
+        let line = d3.line()                        // 定義線段
+          .x(function (d) {
+              return Xscale(d.x);
+          })
+          .y(function (d) {
+              return Yscale(d.y);
+          })
+
+        d3.select('svg').append('path')
+          .attr('d', line(dataset))               // 使用定義線段
+          .attr("transform", "translate(30,20)")
+          .attr('stroke', '#e1e1e1')
+          .attr('stroke-width',1)
+          .attr('fill', 'none');
+
+        // d3.select('svg').append("text")
+        //   // .attr("transform", "translate(" + 500 + "," + 30 + ")")
+        //   .attr("dy", ".35em")
+        //   .attr("text-anchor", "start")
+        //   .style("fill", "steelblue")
+        //   .text("Close");
+    },
+    changeData() {
+      this.sampleData = [5, 30];
+    },
   },
   watch: {
-    // sampleData: function() {
-    //   this.draw(this.sampleData);
-    // }
+    sampleData: function() {
+      console.log('sampleData');
+      
+      this.draw(this.sampleData);
+    }
   },
   created(){
-    // d3.select("#app")
-    //   .append("svg")
-    //   .attr("width", 500)
-    //   .attr("height", 500);
   },
   mounted(){
-    // const range = _.range(1, 3);
-    // console.log('range', range);
+    this.drawD3();
   }
 }
 </script>
