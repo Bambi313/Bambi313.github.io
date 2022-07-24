@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/',
+    path: '/all-analyze',
     name: 'allSticker',
     component: () => import(/* webpackChunkName: "allSticker" */ '../views/AllStickerView.vue')
   },
@@ -12,7 +12,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "singleSticker" */ '../views/SingleStickerView.vue')
   },
   {
-    path: '/return',
+    // path: '/return',
+    path: '/',
     name: 'return',
     component: () => import(/* webpackChunkName: "return" */ '../views/ReturnView.vue')
   },
