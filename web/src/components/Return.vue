@@ -176,7 +176,7 @@ export default {
         {
           originIdx: 12,
           slug: 'revenueShare',
-          tw: '金額(円)',
+          tw: '分潤(円)',
           sortable: true
         }],
         // for filter
@@ -207,6 +207,7 @@ export default {
       }
     },
     handleFileChange (e) {
+      this.allDataArr = [];
       let files = e.target.files;
 
       for (let i = 0; i < files.length; i++) {

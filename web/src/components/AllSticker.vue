@@ -16,11 +16,11 @@
           <input class="_control_des__btn" type="file" @change="handlePicChange" multiple  v-if="tableData">
         </div>
       </div>
-      <button @click="changeData">New Data</button>
+      <!-- <button @click="changeData">New Data</button>
       <div class="_control_table">
         <div id="graph">
         </div>
-      </div>
+      </div> -->
 
       <div class="_control_table" v-if="tableData">
         <div class="_control_block">
@@ -357,7 +357,7 @@ export default {
   created(){
   },
   mounted(){
-    this.drawD3();
+    // this.drawD3();
   }
 }
 </script>
