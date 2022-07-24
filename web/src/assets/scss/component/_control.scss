@@ -178,18 +178,26 @@
 }
 ._filter_category__li{
     display: flex;
+    border-bottom: 1px solid #d5d5d5;
+    padding: .5rem 0;
+}
+._filter_category__label{
+    width: max-content;
+    max-width: 50vw;
 }
 ._filter_checkbox{
-    position: relative;
     display: flex;
     align-items: center;
+}
+._filter_checkbox__wrap{
+    position: relative;
     
     &::after{
         position: absolute;
         width: .35rem;
         height: .5rem;
         left: .3rem;
-        top: .4rem;
+        top: .3rem;
         content: '';
         display: inline-block;
         // border: 2px solid red;

@@ -215,10 +215,18 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-bottom: 1px solid #d5d5d5;
+  padding: 0.5rem 0;
+}
+
+._filter_category__label {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 50vw;
 }
 
 ._filter_checkbox {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,12 +234,16 @@ p {
       -ms-flex-align: center;
           align-items: center;
 }
-._filter_checkbox::after {
+
+._filter_checkbox__wrap {
+  position: relative;
+}
+._filter_checkbox__wrap::after {
   position: absolute;
   width: 0.35rem;
   height: 0.5rem;
   left: 0.3rem;
-  top: 0.4rem;
+  top: 0.3rem;
   content: "";
   display: inline-block;
   border-width: 0 2px 2px 0;
