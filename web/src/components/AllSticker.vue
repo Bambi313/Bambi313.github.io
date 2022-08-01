@@ -193,9 +193,9 @@ export default {
         name : '',
       };
       d3SrcArr.map((e)=>{
-        console.log('e',e);
+        // console.log('e',e);
         setObj.name = e.shift()[0];
-        console.log('setObj.name', setObj.name)
+        // console.log('setObj.name', setObj.name)
       });
 
     },
@@ -283,7 +283,7 @@ export default {
       this.draw();
     },
     draw(newData) {
-      console.log('draw newData',newData);
+      // console.log('draw newData',newData);
       
       let dataset = newData || this.sampleData;
       let Xdata = dataset.map(function(d) {
@@ -349,7 +349,7 @@ export default {
   },
   watch: {
     sampleData: function() {
-      console.log('sampleData');
+      // console.log('sampleData');
       
       this.draw(this.sampleData);
     }

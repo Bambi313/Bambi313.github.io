@@ -31,6 +31,9 @@
     align-items: flex-end;
     flex-wrap: wrap;
 }
+._guide_highlight--blue{
+    color: $color-text-highlight;
+}
 ._guide_ul{
     padding-left: 1rem;
     list-style: square;
@@ -77,3 +80,10 @@
 // ._guide_small_txt{
 //     font-size: .75rem;
 // }
+._guide_return__filterIcon{
+    background-color: $color-text-highlight;
+    color: white;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}

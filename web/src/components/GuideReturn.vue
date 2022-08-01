@@ -5,8 +5,12 @@
         insert_chart
       </span>
       收益排行
-      </h2>
-    <p>比較各貼圖的銷售數據</p>
+    </h2>
+    <p>比較各貼圖的銷售數據<br>
+        ＊目前預設顯示為上傳報表中最近一個月內有銷售的項目，如想顯示更多項目請使用
+        <span class="_guide_return__filterIcon material-symbols-rounded">filter_list</span>
+        選擇＊
+    </p>
 
     <h3 class="_guide_subtitle">目前功能</h3>
     <div class="_guide_des">
@@ -14,7 +18,7 @@
         <p>可依據以下兩個值顯示貼圖排序</p>
         <ul class="_guide_ul">
           <li class="_guide_ul__li">販售組數</li>
-          <li class="_guide_ul__li">銷售金額</li>
+          <li class="_guide_ul__li">分潤金額</li>
           <!-- <li class="_guide_ul__li">傳送貼圖人數 / No. of Users Sent to <span class="_guide_dot _guide_dot--red"></span></li>
           <li class="_guide_ul__li">接收貼圖人數 / No. of Users who Received <span class="_guide_dot _guide_dot--red"></span></li> -->
           

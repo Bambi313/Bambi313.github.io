@@ -83,7 +83,7 @@
                 </ul>
             </div>
             <div class="_filter_bottom">
-              <div class="_filter_bottom__submit" @click="filterData()">
+              <div class="_filter_bottom__submit" @click="filterData('customize')">
                 送出
               </div>
             </div>
@@ -92,8 +92,49 @@
         </div>
       </div>
 
+      <div class="_control_rank">
+        <div class="_control_rank__set">
+          <div class="_control_rank__title">
+            販售組數最高：
+          </div>
+          <div class="_control_rank__list">
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--gold">1</span>
+              <span v-if="saleCountsSortArr[0]">{{ saleCountsSortArr[0].title }}</span>
+            </div>
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--silver">2</span>
+              <span v-if="saleCountsSortArr[1]">{{ saleCountsSortArr[1].title }}</span>
+            </div>
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--copper">3</span>
+              <span v-if="saleCountsSortArr[2]">{{ saleCountsSortArr[2].title }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="_control_rank__set">
+          <div class="_control_rank__title">
+            分潤金額最高：
+          </div>
+          <div class="_control_rank__list">
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--gold">1</span>
+              <span v-if="revenueShareSortArr[0]">{{ revenueShareSortArr[0].title }}</span>
+            </div>
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--silver">2</span>
+              <span v-if="revenueShareSortArr[1]">{{ revenueShareSortArr[1].title }}</span>
+            </div>
+            <div class="_control_rank__item">
+              <span class="_control_rank__num _control_rank__num--copper">3</span>
+              <span v-if="revenueShareSortArr[2]">{{ revenueShareSortArr[2].title }}</span>
+            </div>
+          </div>  
+        </div>
+      </div>
+
       <Table :fields='fields' :tableData="tableData" @update="reSortData"></Table>
-      
+      <div class="_control_total">總分潤: {{ totalShare }} 円</div>
     </div>
   </div>
 </template>
@@ -116,8 +157,8 @@ export default {
       openFilter: false,
       stickerName: '',
       stickerId: '',
-      startDate: null,
-      lastDate: null,
+      startDate: '',
+      lastDate: '',
       allDataArr: null,
       jsonData: null,
       tableData: null,
@@ -177,6 +218,9 @@ export default {
         chosenType: [],
         chosenCountry: [],
         chosenId: [],
+        saleCountsSortArr: [],
+        revenueShareSortArr: [],
+        totalShare: 0
     }
   },
   methods: {
@@ -194,15 +238,23 @@ export default {
         this.chosenType = [];
       }
     },
-    handleFileChange (e) {
-      // reset all data container start
+    resetAllDataContainer(){
       this.fileLength = 0;
       this.fileCounter = 0;
       this.allDataArr = [];
       this.tableData = [];
       this.jsonData = [];
       this.idSrcArr = [];
-      // reset all data container end
+      this.startDate = '';
+      this.lastDate = '';
+      this.monthArr = [];
+      this.idSrcArr = [];
+      this.idArr = [];
+      this.titleArr = [];
+    },
+    handleFileChange (e) {
+      // reset all data container start
+      this.resetAllDataContainer();
 
       let files = e.target.files;
       this.fileLength = files.length;
@@ -263,8 +315,8 @@ export default {
     },
     getFilterSrcArr(){
       // 更新 filter 資料基底
-      this.chosenId = _.uniq( JSON.parse(JSON.stringify( _.values(_.mapValues(this.idSrcArr, 'id') ))) );
-      this.idArr = this.chosenId;
+      this.idArr = _.uniq( JSON.parse(JSON.stringify( _.values(_.mapValues(this.idSrcArr, 'id') ))) );
+      // this.chosenId = this.idArr;
       // 整理 idSrcArr
       this.idSrcArr = _.uniqBy(this.idSrcArr, 'id');
       // this.idSrcArr = _.filter(_.uniq(row.country), function(o) { return o != ''; } );
@@ -284,11 +336,24 @@ export default {
       this.startDate = this.monthArr[0];
       // set lastDate
       this.lastDate = this.monthArr[this.monthArr.length-1];
-
     },
-    filterData () {
-      let resArr = [];
+    getLastMonthSoldId(){
+      let res = [];
+        let latestMonth = this.lastDate;
+        this.allDataArr.map((item)=>{
+          if(item.month === latestMonth){
+            res.push(item.id);
+          }
+        });
       
+      this.chosenId = res;
+    },
+    filterData (type) {
+      let resArr = [];
+      if(type != 'customize'){
+        this.getLastMonthSoldId();
+      }
+
       // total
       this.jsonData.forEach( (item) => {
         let row = {
@@ -324,6 +389,22 @@ export default {
       });
 
       this.tableData = finalArr;
+      
+      // total
+      let subTotal = 0;
+      _.forEach( this.tableData , function(value) {
+        subTotal += value.revenueShare
+      });
+      this.totalShare = subTotal;
+      
+      // get ranking data
+      let saleCountsData = _.sortBy( this.tableData, function(o) { return parseInt(o.salesCounts); });
+      this.saleCountsSortArr = _(saleCountsData).reverse().value();
+    
+      let revenueShareData = _.sortBy( this.tableData, function(o) { return parseInt(o.revenueShare); });
+      this.revenueShareSortArr = _(revenueShareData).reverse().value();
+      
+      // close filter
       this.openFilter = false;
     },
     reSortData(data){
@@ -348,8 +429,6 @@ export default {
 
       this.fileCounter ++;
     },
-    chosenId: function() {
-    }
   },
   created(){
   },
