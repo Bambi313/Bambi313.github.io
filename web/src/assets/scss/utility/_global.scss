@@ -1,7 +1,7 @@
 body{
     color: $color-dark;
     font-family: 'Noto Sans TC', sans-serif;
-    background-color: $color-secondary;
+    background-color: $color-secondary !important;
     line-height: 1.8;
     font-size: 15px;
 }

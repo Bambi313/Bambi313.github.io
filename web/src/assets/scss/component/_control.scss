@@ -235,6 +235,9 @@
 }
 
 // rank
+._control_rank{
+    margin-bottom: 1.25rem;
+}
 ._control_rank__set{
     margin-bottom: .5rem;
 }
@@ -276,4 +279,19 @@
 }
 ._control_total{
     text-align: right;
+    font-size: 1.25rem;
+}
+._control_exrate_update{
+    font-size: .75rem;
+    text-align: right;
+    color: $color-lighter-gray;
+
+    a{
+        color: $color-lighter-gray;
+    }
+}
+._control_total__twd{
+    // font-size: .75rem;
+    text-align: right;
+    margin-bottom: 1rem;
 }

@@ -135,6 +135,8 @@
 
       <Table :fields='fields' :tableData="tableData" @update="reSortData"></Table>
       <div class="_control_total">總分潤: {{ totalShare }} 円</div>
+      <div class="_control_total__twd" v-if="exrateData">約為新台幣 {{ parseInt(totalShare / exrateData.USDJPY.Exrate * exrateData.USDTWD.Exrate) }} 元</div>
+      <div class="_control_exrate_update" v-if="exrateData">匯率來源：<a href="https://tw.rter.info/" target="_blank">RTER.info</a> 更新時間：{{exrateData.USDJPY.UTC}} </div>
     </div>
   </div>
 </template>
@@ -143,6 +145,7 @@
 import _ from 'lodash';
 import * as moment from "moment/moment";
 import Table from './Table.vue';
+import axios from "axios";
 
 export default {
   name: 'Return',
@@ -220,7 +223,8 @@ export default {
         chosenId: [],
         saleCountsSortArr: [],
         revenueShareSortArr: [],
-        totalShare: 0
+        totalShare: 0,
+        exrateData: null,
     }
   },
   methods: {
@@ -396,7 +400,19 @@ export default {
         subTotal += value.revenueShare
       });
       this.totalShare = subTotal;
-      
+
+      const getExrate = async () => {
+        try {
+              const response = await axios.get('https://cors-anywhere.herokuapp.com/https://tw.rter.info/capi.php')
+              this.exrateData = response.data;
+        } catch(err) {
+              console.log('err')
+        }
+      }
+      if( !this.exrateData ){
+        getExrate();
+      }
+
       // get ranking data
       let saleCountsData = _.sortBy( this.tableData, function(o) { return parseInt(o.salesCounts); });
       this.saleCountsSortArr = _(saleCountsData).reverse().value();
@@ -415,7 +431,7 @@ export default {
       } else {
         this.tableData = _(conArr).value();
       }
-    },
+    }
   },
   watch: {
     allDataArr: async function( data ) {
