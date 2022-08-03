@@ -136,7 +136,8 @@
       <Table :fields='fields' :tableData="tableData" @update="reSortData"></Table>
       <div class="_control_total">總分潤: {{ totalShare }} 円</div>
       <div class="_control_total__twd" v-if="exrateData">約為新台幣 {{ parseInt(totalShare / exrateData.USDJPY.Exrate * exrateData.USDTWD.Exrate) }} 元</div>
-      <div class="_control_exrate_update" v-if="exrateData">匯率來源：<a href="https://tw.rter.info/" target="_blank">RTER.info</a> 更新時間：{{exrateData.USDJPY.UTC}} </div>
+      <div class="_control_exrate_update" v-if="exrateData">目前日幣兌台幣匯率：{{ parseFloat( 1 / exrateData.USDJPY.Exrate * exrateData.USDTWD.Exrate).toFixed(4) }} </div>
+      <div class="_control_exrate_update" v-if="exrateData">來源：<a href="https://tw.rter.info/" target="_blank">RTER.info</a>   更新時間：{{ exrateDate }} </div>
     </div>
   </div>
 </template>
@@ -445,6 +446,9 @@ export default {
 
       this.fileCounter ++;
     },
+    exrateData: function(data) {
+      this.exrateDate = (data.USDJPY.UTC).split(' ')[0];
+    }
   },
   created(){
   },
